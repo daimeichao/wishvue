@@ -1,0 +1,12 @@
+.el-form--inline .el-form-item__content{
+    width:83% !important;
+  }
+  .ovh{
+      width:100%;
+  }
+  .ql-editor{
+      height:500px !important;
+  }
+  .el-form-item__content{
+    line-height: 40px !important; 
+  }

@@ -1,0 +1,178 @@
+/* .out {
+  background-color: white;
+  height: 100vh;
+  padding-top: 1vw;
+} */
+.tabOut,
+.inner {
+  width: 82.5vw;
+  margin-left: 3vw;
+  background-color: white;
+  padding-left: 1.8vw;
+}
+.inner {
+  padding-top: 2vw;
+  padding-bottom:2vw
+}
+.inner::after {
+	content: "";
+	clear:both;
+	display:block;
+}
+
+
+/**表单输入框样式**/
+.inner /deep/ .el-form-item__label {
+  color: black;
+  float: left;
+  font-size: 0.85vw;
+  padding: 0 20px 0 0;
+  font-weight: 100;
+}
+.inner /deep/ .el-input__inner {
+  /* background-color: white;
+  font-size: 0.8vw !important;
+  border: 1px solid #5c5c6c;
+  color: black; */
+  /* height:32px; */
+}
+.inner /deep/ .el-input__icon{
+  line-height: 0px;
+}
+/**分页样式**/
+.page {
+  margin-right: 3vw;
+  float: right;
+  margin-top: 1vw
+}
+
+.page /deep/ .el-pagination__total {
+  color: black;
+}
+.page /deep/ .el-pagination .el-select .el-input .el-input__inner {
+  background: white;
+  border: 1px solid #5c5c6c;
+  color: black;
+  font-size: 10px !important;
+}
+.page /deep/ .el-pagination .btn-prev {
+  background: white;
+  color: black;
+}
+.page /deep/ .el-pagination .btn-next {
+  background: white;
+  color: black;
+}
+.page /deep/ .el-pagination button:disabled {
+  background: white;
+  color: gray;
+}
+.page /deep/ .el-pager li {
+  background: white;
+  color: black;
+}
+.page /deep/ .el-pagination__editor.el-input .el-input__inner {
+  height: 25px;
+  font-size: 12px !important;
+  background: white;
+  color: black;
+  border: 1px solid #5c5c6c;
+}
+.page /deep/ .el-pagination__jump {
+  color: black;
+}
+.page /deep/ .el-pager li.active {
+  color: #409eff;
+}
+.but {
+  width: 4.7vw;
+  height: 2vw;
+  background-color: rgb(47, 98, 235);
+  color: rgb(255, 255, 255);
+  border-radius: 0.3vw;
+  border: 0px;
+  font-size: 0.85vw;
+  line-height: 0.5vw;
+}
+button {
+  cursor: pointer;
+}
+
+/**tab标签页样式**/
+
+/*.tabOut /deep/ .el-tabs__item {
+  color: white;
+  !* border-bottom-color:white *!
+}
+.tabOut /deep/ .el-tabs__item.is-active {
+  color: #409eff;
+  border-bottom: 4px solid #37394c;
+}
+
+.tabOut /deep/ .el-tabs--card > .el-tabs__header {
+  border-bottom-color: white;
+}
+.tabOut /deep/ .el-tabs__nav {
+  border-top: 1px solid #e4e7ed;
+}
+.tabOut {
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}*/
+/*表格样式*/
+/*.out /deep/ .el-table .top-row {
+  background: white;
+}
+.out /deep/ .el-table {
+  font-size: 0.85vw;
+  background: white;
+  color: black;
+}
+.out /deep/ .el-table th.el-table__cell {
+  background-color: white;
+  text-align: center;
+}
+.out /deep/ .el-table th > .cell {
+  font-size: 0.85vw !important;
+  font-family: Microsoft YaHei, Microsoft YaHei-Bold;
+  font-weight: 700;
+  color: black !important;
+}
+.out /deep/ .el-table td > .cell {
+  background: white;
+  font-family: Microsoft YaHei, Microsoft YaHei-Bold;
+  color: black;
+  font-size: 0.85vw;
+  text-align: center;
+}
+.out /deep/ .el-table th.el-table__cell,
+.out /deep/ .el-table td.el-table__cell {
+  border-bottom: 1px solid #5c5c6c !important;
+  border-right: 0 solid #ddd !important;
+}
+
+.out /deep/ .el-table td.el-table__cell {
+  background: white !important;
+}
+.out /deep/ .el-table--scrollable-x .el-table__body-wrapper {
+  overflow-x: hidden;
+}*/
+
+.el-select-dropdown__item.selected,
+.el-select-dropdown__item {
+  background: white;
+}
+.tableClass::after {
+	content: "";
+	clear:both;
+	display:block;
+}
+.tableClass {
+  padding-bottom: 10px;
+}
+
+/**弹窗样式**/
+.examineDialog /deep/ .el-dialog {
+  margin-top:15vh !important
+}

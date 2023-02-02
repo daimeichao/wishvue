@@ -1,0 +1,59 @@
+/* .el-form-item__label{
+  color: white !important;
+}
+
+
+.el-form-item__label{
+  font-weight:normal !important;
+}
+
+.el-input__inner{
+  background-color:rgb(55,57,76);
+  color:white !important;
+}
+
+.el-select{
+  width: 100%;
+}
+
+.el-input{
+  width: 80%;
+}
+.el-table--scrollable-x .el-table__body-wrapper{
+  overflow-x: auto !important; 
+}
+
+.el-table--scrollable-x .el-table__body-wrapper{
+  overflow-x: auto !important; 
+} */
+
+.formOut {
+  margin-bottom: 15px;
+  width: 100%;
+  background-color: white;
+  font-size: 17px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+.formInner:hover.formInner /deep/ .el-input__inner {
+  border: 1px solid #0061ac;
+}
+.formInner:hover.formInner /deep/ .el-input__suffix {
+  background: #0061ac;
+}
+
+.formInner /deep/ .el-input__inner {
+  border: 1px solid #bfced3;
+}
+.formInner /deep/ .el-input__suffix {
+  background: #bfced3;
+  width: 46px;
+  right: 0px;
+  border-radius: 0px 4px 4px 0px;
+}
+.formInner /deep/ .el-select__caret {
+  color: #fff;
+}
+.formInner /deep/ .el-input.is-focus .el-input__inner {
+  border: 1px solid hsl(195, 19%, 79%);
+}

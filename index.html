@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+  <title>社区微心愿管理平台</title>
+  <script>
+    function getI (num) {
+      return num.toString().replace("10", "J")
+        .replace("11", "K")
+        .replace("12", "L")
+        .replace("13", "M")
+        .replace("14", "N")
+        .replace("15", "O")
+        .replace("16", "P")
+        .replace("17", "Q")
+        .replace("1", "A")
+        .replace("2", "B")
+        .replace("3", "C")
+        .replace("4", "D")
+        .replace("5", "E")
+        .replace("6", "F")
+        .replace("7", "G")
+        .replace("8", "H")
+        .replace("9", "I");
+    }
+  </script>
+
+  <style>
+    .clearfloat {
+      zoom: 1
+    }
+
+    .clearfloat:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0
+    }
+
+    .tminfobox {
+      background: #fff;
+      box-sizing: border-box;
+      padding: 0.5vw 1vw;
+    }
+
+    .ztitbox {
+      line-height: 2.4vw;
+      height: 2.4vw;
+      font-size: 1vw;
+      margin: 0.5vw 0;
+    }
+
+    .tmmc {
+      height: 1.8vw;
+      font-size: 1vw;
+      width: 50vw;
+      border: 1px solid #c2c2c2;
+      padding: 0 1vw;
+    }
+
+    p {
+      margin: 0.5vw 0;
+    }
+
+    .por {
+      position: relative;
+    }
+
+    .poa {
+      position: absolute;
+    }
+
+    .pof {
+      position: fixed;
+    }
+
+    .ovh {
+      overflow: hidden;
+    }
+
+    .tc {
+      text-align: center;
+    }
+
+    .tmlxlib {
+      margin-right: 1vw;
+    }
+
+    .maindiv {
+      width: 64vw;
+      margin: 1vw 1vw 1vw 10vw;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+
+    .maindiv2 {
+      width: 13.2vw;
+      margin: 1vw 0 0 0;
+      display: inline-block;
+      background-color: pink;
+      height: 20vw;
+      vertical-align: top;
+    }
+
+    .tltxt {
+      font-size: 1vw;
+      font-weight: normal;
+    }
+
+    .outdata {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .tmlx {
+      float: left;
+      width: 8vw;
+      font-size: 1vw;
+      line-height: 2.4vw;
+      height: 2.4vw;
+    }
+
+    .tgtit {
+      font-size: 1vw;
+      margin: 0.8vw 0;
+    }
+
+    .tgbox {
+      width: 100%;
+    }
+
+    .xxtag {
+      color: #f00;
+    }
+
+    .hid {
+      display: none;
+    }
+
+    .tybtn {
+      border-radius: 0.5vw;
+      background: #1E6FB7;
+      color: #fff;
+      padding: 0.8vw 1.4vw;
+      font-size: 1vw;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .tytmbox {
+      background: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .el-radio__label {
+      font-size: 1vw !important;
+    }
+
+    .el-radio__inner {
+      width: 0.8vw !important;
+      height: 0.8vw !important;
+      margin-bottom: 0.1vw;
+    }
+
+    /* .el-input__inner {
+      font-size: 1vw !important;
+    } */
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="https://appzb.fjcpc.edu.cn/pageoffice/pageoffice.js"></script>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

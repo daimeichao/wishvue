@@ -1,0 +1,15 @@
+.el-tabs__item {
+    width:7vw ;
+    height: 3vw !important;
+    text-align: center !important;
+    -webkit-box-sizing: border-box ;
+    box-sizing: border-box ;
+    line-height: 3vw !important;
+    display: inline-block ;
+    list-style: none ;
+    font-size: 1.2vw !important;
+    border-color: #DEDDDD ;
+    font-weight: 600;
+    color: #303133 ;
+    position: relative ;
+}

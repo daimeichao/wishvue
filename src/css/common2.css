@@ -1,0 +1,42 @@
+
+.clearfix:after,
+.clearfix:before {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+
+.slh {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+
+.el-input__inner{
+  border:1px solid #C0C4CC;
+}
+.el-date-editor .el-range__icon {
+    line-height: 1vw;
+}
+.el-date-editor .el-range-separator {
+    font-size: 0.8vw;
+}
+.el-date-editor .el-range-separator {
+    line-height: 1.5vw;
+}
+.el-range-editor.is-active, .el-range-editor.is-active:hover {
+    border-color: #C0C4CC;
+}
+.el-input__inner {
+    height: 2vw ;
+    line-height: 2vw;
+    width: 9vw;
+}
+.el-input__inner:focus{
+  border-color: #C0C4CC;
+}
