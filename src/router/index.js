@@ -136,6 +136,35 @@ export default new Router({
         path: "fbxysh",
         name: "发布心愿审核",
         component: reslove => require(["@/views/xygl/fbxysh"], reslove)
-      }]}
+      }]},
+    {
+      path: "/zyzgl",
+      component: layout,
+      name: "",
+      children: [
+        {
+          path: "zyzlist",
+          name: "志愿者列表",
+          component: reslove => require(["@/views/zyzgl/zyzlist"], reslove)
+        },
+        {
+          path: "zyzsh",
+          name: "志愿者审核",
+          component: reslove => require(["@/views/zyzgl/zyzsh"], reslove)
+        },
+      ]
+    },
+    {
+      path: "/jfgl",
+      component: layout,
+      name: "",
+      children: [
+        {
+          path: "jflist",
+          name: "积分列表",
+          component: reslove => require(["@/views/jfgl/jflist"], reslove)
+        },
+      ]
+    },
 
 ]});
