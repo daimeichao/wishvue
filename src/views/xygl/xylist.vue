@@ -192,13 +192,11 @@
         </el-form-item>
 
         <el-form-item label="许愿时间:" prop="wish_time">
-        <el-date-picker
-          v-model=" form.wish_time"
-          type="date"
-          placeholder="选择日期"
-          value-format="yyyy-MM-dd"
-          style="width: 50%; height: 0.9vh; margin-left: 0vw;font-size: 14px">
-        </el-date-picker>
+          <el-date-picker
+            v-model="form.wish_time"
+            type="datetime"
+            placeholder="选择日期时间">
+          </el-date-picker>
         </el-form-item>
       </el-form>
       <div class="dialog-footer" style="text-align: right">
@@ -517,7 +515,22 @@
       };
     },
     methods: {
-
+      //将东八区时间格式化
+      filterTime(time) {
+        var date = new Date(time);
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? "0" + m : m;
+        var d = date.getDate();
+        d = d < 10 ? "0" + d : d;
+        var h = date.getHours();
+        h = h < 10 ? "0" + h : h;
+        var minute = date.getMinutes();
+        minute = minute < 10 ? "0" + minute : minute;
+        var s = date.getSeconds();
+        s = s < 10 ? "0" + s : s;
+        return y + "-" + m + "-" + d + " " + h + ":" + minute + ":" + s;
+      },
       //放大图片的方法
       openImg (url) {
         this.srcList = []
@@ -655,8 +668,10 @@
         return true;
       },
       deleteDi (row) {
+        console.log("row",row)
         let cs = {
           id: row.id,
+          pid:row.tid,
         };
         this.$confirm("是否删除该条心愿信息?", "提示", {
           confirmButtonText: "确定",
@@ -861,6 +876,8 @@
       },
       //点击编辑页面的修改按钮
       onUpdate (formName) {
+        this.form.wish_time=this.filterTime(this.form.wish_time)
+        console.log("this.update",this.form)
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$confirm("是否修改许愿信息?", "提示", {

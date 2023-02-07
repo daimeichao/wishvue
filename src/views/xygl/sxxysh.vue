@@ -359,8 +359,10 @@ import {
       },
       //删除
       deleteDi (row) {
+        console.log(row,"row")
         let cs = {
           pid: row.tid,
+          id:row.id,
         };
         this.$confirm("是否删除该条认领信息?", "提示", {
           confirmButtonText: "确定",

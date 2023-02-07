@@ -43,6 +43,9 @@
                   <button style="background-color: rgb(30, 185, 136)" @click="reset()">
                     重置
                   </button>
+                  <button style="background-color: rgb(0, 97, 172)" @click="addsp()">
+                    新增
+                  </button>
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>
@@ -73,26 +76,19 @@
               width="50px"
               align="center">
             </el-table-column>
-            <el-table-column prop="username" label="用户名" width="130px"> </el-table-column>
-            <el-table-column prop="change" label="增减" width="130px">
-              <template slot-scope="scope"width="130px">
-                            <span v-if="scope.row.change == '0'">新增</span>
-                            <span v-if="scope.row.change== '1'">消费</span>
-                          </template>
+            <el-table-column prop="spname" label="商品名称" width="130px"> </el-table-column>
+            <el-table-column prop="spprice" label="商品价格" width="100px">
             </el-table-column>
-            <el-table-column prop="score" label="积分数" width="130px"> </el-table-column>
-            <el-table-column prop="jf_audit_state" label="审核状态" width="130px">
-              <template slot-scope="scope"width="130px">
-                            <span v-if="scope.row.jf_audit_state == '0'">待审核</span>
-                            <span v-if="scope.row.jf_audit_state== '1'">审核通过</span>
-                <span v-if="scope.row.jf_audit_state == '2'">审核不通过</span>
-                          </template>
+            <el-table-column prop="kc" label="库存" width="50px"> </el-table-column>
+            <el-table-column prop="add_time" label="上架时间" width="130px">
             </el-table-column>
-            <el-table-column prop="jf_audit_remark" label="审核备注" width="130px"> </el-table-column>
-            <el-table-column label="操作" min-width="350">
+            <el-table-column prop="spxq" label="商品详情" min-width="120" >
+            </el-table-column>
+            <el-table-column prop="url" label="商品图片" min-width="120"> </el-table-column>
+            <el-table-column label="操作" min-width="200">
               <template slot-scope="scope">
                 <btn :flag="5" @click.native="detail(scope.row)"></btn>
-<!--                <btn :flag="1" @click.native="update(scope.row)"></btn>-->
+                <btn :flag="1" @click.native="update(scope.row)"></btn>
                 <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
 
               </template>
@@ -105,33 +101,97 @@
         </template>
       </div>
     </el-row>
+<!--    新增和编辑弹窗-->
+    <div class="dialog_out">
+      <el-dialog :title="title" :visible.sync="adddialog" :before-close="closeWindow02" :modal-append-to-body="false">
+        <el-form :model="form" :rules="rules"label-width="150px" :label-position="labelPosition" ref="roleData1">
+          <el-form-item label="商品名称:" prop="spname">
+            <el-input v-model="form.spname" placeholder="请输入" clearable style="width: 50%">
+            </el-input>
+          </el-form-item>
+          <el-form-item label="商品价格:" prop="spprice">
+            <el-input v-model="form.spprice" placeholder="请输入" clearable style="width: 50%"></el-input>
+          </el-form-item>
+          <el-form-item label="商品库存:" prop="kc">
+            <el-input v-model="form.kc" placeholder="请输入" clearable style="width: 50%"></el-input>
+          </el-form-item>
+          <el-form-item label="商品图片:" prop="url">
+            <div >
+              <el-upload class="avatar-uploader" style="display: inline-block;" ref="upload"
+                         list-type="picture-card"
+                         :action="fileUpload" :http-request="afterRead" multiple
+                         :on-preview="handlePreview" :on-remove="handleRemove" :before-upload="beforeRead"
+                         v-loading.fullscreen.lock="loading"  element-loading-text="上传中"
+                         element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0,0.1)"
+                         :before-remove="beforeRemove"  :on-exceed="handleExceed" :limit="1"
+                         :file-list="fileList" >
+                <i class="el-icon-plus avatar-uploader-icon"></i>
+              </el-upload>
+            </div> 
+            <div>
+            </div></el-form-item></el-form>
+        <div class="dialog-footer" style="text-align: right">
+        <span slot="footer" class="dialog-footer" style="text-align: right ; ">
+    <button style="
+    margin-left: 80%;
+
+              width: 4vw;
+              height: 2vw;
+              border: 1px solid #a7a8aa;
+              background-color: #a7a8aa;
+              color: #ffffff;
+              border-radius: 0.3vw;
+              font-size: 0.85vw;
+            "@click="closeWindow02()">
+      <div style="">取消</div>
+    </button>
+          <button v-if="type==2" style="
+              width: 4vw;
+              height: 2vw;
+              border: 1px solid #0061ac;
+              background-color: #0061ac;
+              color: #ffffff;
+              border-radius: 0.3vw;
+              font-size: 0.85vw;
+            "  @click="onUpdate('roleData1')">
+      <div style="">提交</div>
+            <div style="height: 0px; clear: both"></div>
+          </button>
+          <button v-if="type==1" style="
+              width: 4vw;
+              height: 2vw;
+              border: 1px solid #0061ac;
+              background-color: #0061ac;
+              color: #ffffff;
+              border-radius: 0.3vw;
+              font-size: 0.85vw;
+            "  @click="onSubmit('roleData1')">
+      <div style="">新增</div>
+            <div style="height: 0px; clear: both"></div>
+          </button>
+        </span></div></el-dialog></div>
     <!-- 详情表单 -->
     <div class="dialog_out">
       <el-dialog :title="title" :visible.sync="detailVisible" :before-close="closeWindow02" :modal-append-to-body="false">
         <el-form :model="form" label-width="150px" :label-position="labelPosition" ref="ruleForm">
-          <el-form-item label="用户名:" prop="username">
-            <span >{{ form.name}}</span>
+          <el-form-item label="商品名称:" prop="username">
+            <span >{{ form.spname}}</span>
           </el-form-item>
-          <el-form-item label="积分数目:" prop="score">
-            <span >{{ form.score }}</span>
+          <el-form-item label="商品库存:" prop="score">
+            <span >{{ form.kc }}</span>
           </el-form-item>
-          <el-form-item label="变化:" prop="change">
-            <span  v-if=" form.change=='0'" >增加积分</span>
-            <span  v-if=" form.change=='1'" >消费积分</span>
-          </el-form-item>
-          <el-form-item label="审核状态:" prop=" jf_audit_state" >
-            <span  v-if=" form. jf_audit_state == '0'">待审核</span>
-            <span  v-if="form. jf_audit_state == '1'">审核通过</span>
-            <span  v-if="form. jf_audit_state == '2'">审核不通过</span>
-          </el-form-item>
-          <el-form-item label="审核备注:" prop="wish_audit_remark" >
-            <span >{{ form.jf_audit_remark?form.jf_audit_remark:'无'}}</span>
+          <el-form-item label="商品价格:" prop="wish_audit_remark" >
+            <span >{{ form.spprice}}元</span>
           </el-form-item>
           <el-form-item label="新增时间:" prop="add_time">
             <span >{{ form.add_time }}</span>
           </el-form-item>
-          <el-form-item label="审核人:" prop="jf_auditid">
-            <span >{{ form.jf_auditid?form.jf_auditid:'无'}}</span>
+          <el-form-item label="编辑时间:" prop="add_time">
+            <span >{{ form.upd_time }}</span>
+          </el-form-item>
+          <el-form-item label="商品图片:" prop="url">
+            <el-image @click="openImg(form.url)" :preview-src-list="srcList" fit="contain" style="width: 100px; height: 100px" :src="form.url">
+            </el-image >
           </el-form-item>
         </el-form>
         <div class="dialog-footer" style="text-align: right">
@@ -155,14 +215,22 @@
 
 <script>
   import {
-    jflist,
-    delById,
-    getById,
-    updById
+    splist,
+    delsp,
+    spById,
+    addsp,
+    updsp
   } from "../../api/jf/jfAx";
+  import config from "../../../config/config";
+  import axios from "axios";
   export default {
     data () {
       return {
+        srcList: [],
+        img: '.jpg, .jpeg, .png, .gif',
+        fileShowUrl: config.apiUrl,
+        fileUpload: config.apiUrl + "/upload/fileupload",
+        tpList:[],
         minheight: "",
         dialogImageUrl: '',
         treeLoading: true,
@@ -173,27 +241,149 @@
         form: {
         },
         isOpenSendBack: true,
+        adddialog:false,
         dialogVisible: false,
         detailVisible: false,
         loading: false,
         tableData: [],
         params: {
-         name:'',
+          name:'',
           curpage: 1,
           pagesize: 10,
         },
         total: 0,
         rules: {
-          sort: [
-            { required: true, message: "请输入排序", trigger: "blur" },],
+          spname: [
+            { required: true, message: "请输入商品名称", trigger: "blur" },],
+          spprice: [
+            { required: true, message: "请输入商品价格", trigger: "blur" },],
+          kc: [
+            { required: true, message: "请输入商品库存", trigger: "blur" },],
+          url: [
+            { required: true, message: "请添加商品图片", trigger: "blur" },],
         },
       };
     },
     methods: {
+      //放大图片的方法
+      openImg (url) {
+        this.srcList = []
+        this.srcList.push(url)
+      },
+      //附件
+      beforeAvatarUpload(file) {
+        // this.fileList=[];
+        // 上传图片前处理函数
+        const isJPG =
+          file.type === "image/jpeg" ||
+          file.type === "image/png" ||
+          file.type === "image/gif";
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        let that = this;
+        let isAllow = false;
+        if (!isJPG) {
+          this.$message.error("上传的附件只能是 jpg、png、gif 格式!");
+        }
+        if (!isLt2M) {
+          this.$message.error("上传的附件大小不能超过 2MB!");
+        }
+        const isSize = new Promise(function (resolve, reject) {
+          let width = 750;
+          let height = 420;
+          let _URL = window.URL || window.webkitURL;
+          let image = new Image();
+          image.onload = function () {
+            let valid = image.width >= image.height;
+            valid ? resolve() : reject();
+          };
+          image.src = _URL.createObjectURL(file);
+        }).then(
+          () => {
+            return file;
+          },
+          () => {
+            return file;
+          }
+        );
+        return isJPG && isLt2M && isSize;
+      },
+      handleAvatarSuccess(res, file, fileList) {
+        // 原图
+        this.IMG = config.apiUrl + res[0].url;
+        this.fjtp = res[0].url;
+        this.fileList = [];
+      },
+      afterRead (file) {
+        file.status = 'uploading';
+        file.message = '上传中...';
+        let params = new FormData();
+        params.append("file", file.file);
+        params.append("path", "xy")
+
+        let cg = {
+          headers: {
+            //添加请求头
+            "Content-Type": "multipart/form-data",
+          },
+        };
+        axios
+          .post(this.url, params,cg)
+          .then((res) => {
+            this.tpList.push({name:res.data[0].name,url:res.data[0].url})
+          }).catch(err => { this.form.name=res.data[0].name
+          this.$refs.upload.clearFiles()
+          this.$message({
+            message: '没有该权限，请联系管理员',
+            type: 'warning'
+          })
+
+        });
+      },
+      //维护前照片上传前检查文件格式
+      beforeRead (file) {
+        const fileName = file.name; //取到文件名称，包含后缀名
+        const m = fileName.match(/\.(\w+)(#|\?|$)/);  //返回后缀名的Array
+        const fileType = m[0].toString().toLowerCase();  //拿到后缀名,例如：.jpg
+        const validType = (this.img).includes(fileType); //判断是否为图片类型文件
+        if (!validType) {
+          this.$message.error('只能上传图片!');
+          return false;
+        }
+        for(let i=0;i<this.tpList.length;i++){
+          if(fileName == this.tpList[i].name){
+            this.$message.error('该图片已存在，请重新选择！');
+            return false;
+          }
+        }
+        const isLt2M = file.size / 1024 / 1024 < 20
+        if (!isLt2M) {
+          this.$message.error('上传文件大小不能超过 20MB!');
+          return false;
+        }
+        return true;
+      },
+      handleRemove(file, fileList) {
+        //自定义删除的方法
+        for(let i=0;i<this.tpList.length;i++){
+          if(this.tpList[i].name == file.name){
+            this.tpList.splice(i,1);//删除图片地址
+          }
+        }
+      },
+      handlePreview(file) {
+        this.previewVisible = true;
+        this.previewPath = file.url;
+      },
+      handleExceed(files, fileList) {
+        this.$message.warning(`当前限制选择 10 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+      },
+      beforeRemove(file, fileList) {
+        return true;
+      },
       //删除
       deleteDi (row) {
         let cs = {
-          pid: row.jid,
+          pid: row.pid,
         };
         this.$confirm("是否删除该条认领信息?", "提示", {
           confirmButtonText: "确定",
@@ -201,8 +391,8 @@
           type: "warning",
         })
           .then(() => {
-            delById(cs).then((res) => {
-              if (res.status == "success") {
+            delsp(cs).then((res) => {
+              if (res.result == "success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -230,10 +420,12 @@
       detail (row) {
         this.title = "详情";
         let sc = {
-          pid: row.jid,
+          pid: row.pid,
         };
-        getById(sc).then((res) => {
+        spById(sc).then((res) => {
+          console.log("detail res", res)
           this.form=res.map
+          this.form.url=fileShowUrl+this.form.url
           this.detailVisible = true;
         });
       },
@@ -244,19 +436,24 @@
       update (row) {
         this.$refs.upload && this.clearForm()
         this.type = 2;
-        this.title = "审核实现心愿";
+        this.title = "编辑商品";
         this.form.url='';
         let sc = {
-          pid: row.jid,
+          pid: row.pid,
         };
-        getById(sc).then((res) => {
+        spById(sc).then((res) => {
+          console.log("detail res",res)
           this.form=res.map;
-          this.form.zyz_auditid=localStorage.getItem("pid");
-          this.dialogVisible = true;
+          this.adddialog = true;
         });
       },
       //点击编辑页面的修改按钮
       onUpdate (formName) {
+        if(this.tpList.length !=0){
+          this.form.url=this.tpList[0].url }
+        else {
+          this.form.url= '';
+        }
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$confirm("是否审核?", "提示", {
@@ -265,8 +462,8 @@
               type: "warning",
             })
               .then(() => {
-                updById(this.form).then((res) => {
-                  if (res.status == "success") {
+                updsp(this.form).then((res) => {
+                  if (res.result == "success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -301,10 +498,9 @@
         });
         this.dialogVisible = false;
       },
+      //关闭详情和新增弹窗
       closeWindow02 () {
-        // this.$nextTick(() => {
-        //   this.$refs['formName'].resetFields();
-        // });
+      this.adddialog=false;
         this.detailVisible = false;
       },
       onSubmit (formName) {
@@ -316,7 +512,7 @@
               type: "warning",
             })
               .then(() => {
-                addSX(this.form).then((res) => {
+                addsp(this.form).then((res) => {
                   if (res.result == "success") {
                     this.$message({
                       type: "success",
@@ -341,11 +537,14 @@
           }
         });
       },
+      //新增商品
+      addsp(){
+        this.adddialog=true
+        this.type=1
+        this.form={}
+      },
       //搜索
       search () {
-        if (this.params.o_type != '' || this.params.company_id != '') {
-          this.params.curpage = 1
-        }
         this.getlist();
       },
       //重置
@@ -357,9 +556,9 @@
       },
       //获取列表
       getlist () {
-        jflist(this.params).then((res) => {
-          if (res.status == "success") {
-            console.log("jflist",res)
+        splist(this.params).then((res) => {
+          if (res.result == "success") {
+            console.log("splist",res)
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;
           } else {

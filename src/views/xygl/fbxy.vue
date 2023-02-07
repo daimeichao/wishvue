@@ -25,6 +25,13 @@
           <el-input v-model="form.adder" placeholder="请输入" maxlength="200" clearable style="width: 50%">
           </el-input>
         </el-form-item>
+      <el-form-item label="许愿时间:" prop="wish_time">
+        <el-date-picker
+          v-model="form.wish_time"
+          type="datetime"
+          placeholder="选择日期时间">
+        </el-date-picker>
+        </el-form-item>
         <el-form-item label="心愿内容:" prop="seats_total">
           <el-input  type="textarea"
                      :autosize="{ minRows: 2, maxRows: 4}" v-model="form.wish_content" placeholder="" maxlength="255" style="width: 50%"></el-input>
@@ -94,16 +101,36 @@
           wish_content: [
             { required: true, message: "请输入许愿内容", trigger: "blur" },
           ],
+          adder: [
+            { required: true, message: "请输入地址", trigger: "blur" },
+          ],
           wish_time: [
-            { required: true, message: "请选择wish_time", trigger: "blur" },
+            { required: true, message: "请选择许愿时间", trigger: "blur" },
           ],
         },
         name:'',//昵称
       };
     },
     methods: {
+      filterTime(time) {
+        var date = new Date(time);
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? "0" + m : m;
+        var d = date.getDate();
+        d = d < 10 ? "0" + d : d;
+        var h = date.getHours();
+        h = h < 10 ? "0" + h : h;
+        var minute = date.getMinutes();
+        minute = minute < 10 ? "0" + minute : minute;
+        var s = date.getSeconds();
+        s = s < 10 ? "0" + s : s;
+        return y + "-" + m + "-" + d + " " + h + ":" + minute + ":" + s;
+      },
       onSubmit (formName) {
         this.form.operatorid=localStorage.getItem("pid");
+        this.form.wish_time=this.filterTime(this.form.wish_time)
+        console.log("add form",this.form)
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$confirm("是否新增心愿?", "提示", {
@@ -113,6 +140,7 @@
             })
               .then(() => {
                 addWish1(this.form).then((res) => {
+
                   if (res.status == "success") {
                     this.$message({
                       type: "success",
@@ -159,6 +187,7 @@ reset(){
         this.form.wishusername="";
         this.form.wish_content="";
         this.form.adder="";
+        this.form.wish_time=""
 }
     },
 

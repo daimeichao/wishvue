@@ -71,7 +71,7 @@
           <el-input v-model="form.operatorid" placeholder="" maxlength="10" style="width: 50%"></el-input>
         </el-form-item>
       </el-form>
-      <div class="dialog-footer" style="text-align: right">
+      <div class="dialog-footer" style="text-align: right;margin-bottom: 15px">
         <el-button @click="closeWindow()">关 闭</el-button>
         <el-button type="primary" @click="onSubmit('roleData')" v-if="type == 1">新 增</el-button>
         <el-button type="primary" @click="onUpdate('roleData')" v-if="type == 2">提 交</el-button>
@@ -117,7 +117,7 @@
         </el-form-item>
       </el-form>
 
-      <div class="dialog-footer" style="text-align:right">
+      <div class="dialog-footer" style="text-align:right;margin-bottom: 15px">
         <el-button @click="closeWindow02">关 闭</el-button>
       </div>
 

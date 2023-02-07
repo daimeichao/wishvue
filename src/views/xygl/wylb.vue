@@ -106,6 +106,8 @@
     <btn :flag="5" @click.native="detail(scope.row)"></btn>
 <!--          编辑认领人信息-->
           <btn :flag="1" v-if="scope.row.claimant_audit_state!=='2'"  @click.native="upd(scope.row)"></btn>
+          <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
+
   </template>
       </el-table-column>
     </el-table>
@@ -360,9 +362,8 @@
     deleteWish,
     getListById,
     getsxSHList,
-    getSXById
+    getSXById, deleteSX
   } from "../../api/xygl/xyglAx";
-  // import { getYhAndCompList } from "../../api/userApi/userAx";
   import config from '../../../config/config.js';
   import axios from 'axios';
   import {updateUser} from "../../api/userApi/jsglAx";
@@ -633,18 +634,22 @@
       beforeRemove(file, fileList) {
         return true;
       },
-      deleteDi(row) {
+
+      //删除
+      deleteDi (row) {
+        console.log(row,"row")
         let cs = {
-          id: row.id,
+          pid: row.tid,
+          id:row.id,
         };
-        this.$confirm("是否删除该条心愿信息?", "提示", {
+        this.$confirm("是否删除该条认领信息?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning",
         })
           .then(() => {
-            deleteWish(cs).then((res) => {
-              if (res.result == "success") {
+            deleteSX(cs).then((res) => {
+              if (res.status == "success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -671,6 +676,7 @@
       },
 
       detail (row) {
+        console.log("详情row",row)
         this.urlList=[];
         this.title = "详情";
         let sc = {

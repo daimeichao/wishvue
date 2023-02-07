@@ -17,3 +17,23 @@ export const getById = params => {
 export const updById = params => {
   return ax.pJson(URL + "/jf/updById", params);
 };
+//商品列表
+export const splist = params => {
+  return ax.pJson(URL + "/jf/splist", params);
+};
+//新增商品
+export const addsp = params => {
+  return ax.pJson(URL + "/jf/addsp", params);
+};
+//修改商品
+export const updsp = params => {
+  return ax.pJson(URL + "/jf/updsp", params);
+};
+//删除商品
+export const delsp = params => {
+  return ax.pJson(URL + "/jf/delsp", params);
+};
+//商品详情
+export const spById = params => {
+  return ax.pJson(URL + "/jf/spById", params);
+};

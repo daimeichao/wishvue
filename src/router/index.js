@@ -166,5 +166,17 @@ export default new Router({
         },
       ]
     },
+    {
+    path: "/goods",
+  component: layout,
+  name: "",
+  children: [
+  {
+    path: "spgl",
+    name: "商品列表",
+    component: reslove => require(["@/views/goods/spgl"], reslove)
+  },
+]
+},
 
 ]});

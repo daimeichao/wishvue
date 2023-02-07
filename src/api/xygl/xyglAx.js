@@ -86,9 +86,3 @@ export const wishlist = params => {
 export const getListById = params => {
   return ax.pJson(URL + "/wish/getone", params);
 };
-// export const getOneList = params => {
-//   return ax.gJson(URL + "/gk/OneList");
-// };
-// export const searchList = params => {
-//   return ax.gJson(URL + "/gk/searchList", params);
-// };
