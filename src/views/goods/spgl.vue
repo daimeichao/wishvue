@@ -27,7 +27,7 @@
                 <div>
                   <el-col class="disFlexCenter">
                     <div style="font-size: 0.85vw">
-                      用户姓名：
+                      商品名称：
                     </div>
                     <div style="margin-left: 5px">
                       <el-input v-model="params.name" placeholder="请输入" show-word-limit
@@ -84,7 +84,12 @@
             </el-table-column>
             <el-table-column prop="spxq" label="商品详情" min-width="120" >
             </el-table-column>
-            <el-table-column prop="url" label="商品图片" min-width="120"> </el-table-column>
+            <el-table-column prop="url" label="商品图片" min-width="120">
+              <template slot-scope="scope">
+                <el-image @click="openImg(scope.row.url)" :preview-src-list="srcList" fit="contain" style="width: 200px; height: 150px" :src="scope.row.url">
+                </el-image>
+              </template>
+            </el-table-column>
             <el-table-column label="操作" min-width="200">
               <template slot-scope="scope">
                 <btn :flag="5" @click.native="detail(scope.row)"></btn>
@@ -108,6 +113,10 @@
           <el-form-item label="商品名称:" prop="spname">
             <el-input v-model="form.spname" placeholder="请输入" clearable style="width: 50%">
             </el-input>
+          </el-form-item>
+          <el-form-item label="商品详情:" prop="spxq">
+            <el-input  type="textarea"
+                       :autosize="{ minRows: 2, maxRows: 4}" v-model="form.spxq" placeholder="" maxlength="255" style="width: 50%"></el-input>
           </el-form-item>
           <el-form-item label="商品价格:" prop="spprice">
             <el-input v-model="form.spprice" placeholder="请输入" clearable style="width: 50%"></el-input>
@@ -177,6 +186,9 @@
           <el-form-item label="商品名称:" prop="username">
             <span >{{ form.spname}}</span>
           </el-form-item>
+          <el-form-item label="商品详情:" prop="username">
+            <span >{{ form.spxq}}</span>
+          </el-form-item>
           <el-form-item label="商品库存:" prop="score">
             <span >{{ form.kc }}</span>
           </el-form-item>
@@ -210,6 +222,14 @@
     </button>
       </span></div>
         <div style="height: 0px; clear: both"></div></el-dialog></div>
+    <!--    预览图片弹窗-->
+    <el-dialog
+      title="图片预览"
+      :visible.sync="previewVisible"
+      width="50%">
+      <img :src="previewPath" class="previewImg" style="width: 100%;height: 70%"/>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -226,6 +246,12 @@
   export default {
     data () {
       return {
+        //控制图片预览窗口的显示与隐藏
+        previewVisible:false,
+        //图片地址url
+        previewPath:'',
+        url: config.apiUrl + "/upload/fileupload",
+        fileList: [],
         srcList: [],
         img: '.jpg, .jpeg, .png, .gif',
         fileShowUrl: config.apiUrl,
@@ -261,13 +287,19 @@
             { required: true, message: "请输入商品库存", trigger: "blur" },],
           url: [
             { required: true, message: "请添加商品图片", trigger: "blur" },],
+          spxq: [
+            { required: true, message: "请输入商品详情", trigger: "blur" },],
         },
       };
     },
     methods: {
+      handlePreview(file) {
+        this.previewVisible = true;
+        this.previewPath = file.url;
+      },
       //放大图片的方法
       openImg (url) {
-        this.srcList = []
+        this.srcList = [];
         this.srcList.push(url)
       },
       //附件
@@ -309,7 +341,7 @@
       },
       handleAvatarSuccess(res, file, fileList) {
         // 原图
-        this.IMG = config.apiUrl + res[0].url;
+        this.IMG = config.apiUrl + res.url;
         this.fjtp = res[0].url;
         this.fileList = [];
       },
@@ -329,8 +361,9 @@
         axios
           .post(this.url, params,cg)
           .then((res) => {
+            console.log("tpres",res)
             this.tpList.push({name:res.data[0].name,url:res.data[0].url})
-          }).catch(err => { this.form.name=res.data[0].name
+          }).catch(err => {
           this.$refs.upload.clearFiles()
           this.$message({
             message: '没有该权限，请联系管理员',
@@ -375,7 +408,7 @@
         this.previewPath = file.url;
       },
       handleExceed(files, fileList) {
-        this.$message.warning(`当前限制选择 10 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+        this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
       },
       beforeRemove(file, fileList) {
         return true;
@@ -392,7 +425,7 @@
         })
           .then(() => {
             delsp(cs).then((res) => {
-              if (res.result == "success") {
+              if (res.status == "success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -424,8 +457,8 @@
         };
         spById(sc).then((res) => {
           console.log("detail res", res)
-          this.form=res.map
-          this.form.url=fileShowUrl+this.form.url
+          this.form=res.data.outmap.map
+          this.form.url=this.fileShowUrl+this.form.url
           this.detailVisible = true;
         });
       },
@@ -434,16 +467,26 @@
       },
       //打开编辑页面
       update (row) {
+        console.log("row",row)
+        this.fileList = []
+        this.tpList = []
         this.$refs.upload && this.clearForm()
         this.type = 2;
         this.title = "编辑商品";
-        this.form.url='';
+        // this.form.url='';
         let sc = {
           pid: row.pid,
         };
         spById(sc).then((res) => {
           console.log("detail res",res)
-          this.form=res.map;
+          this.form=res.data.outmap.map
+          this.form.url=this.fileShowUrl+this.form.url
+          if(this.form.url!=='' &&this.form.url!==null){
+          this.fileList.push({name:this.form.spname,url:this.form.url})
+          this.tpList.push({name:this.form.spname,url:this.form.url})}
+          else {
+            this.tpList=[]
+          }
           this.adddialog = true;
         });
       },
@@ -463,7 +506,7 @@
             })
               .then(() => {
                 updsp(this.form).then((res) => {
-                  if (res.result == "success") {
+                  if (res.status == "success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -504,6 +547,13 @@
         this.detailVisible = false;
       },
       onSubmit (formName) {
+        this.form.operatorid=localStorage.getItem("pid");
+        console.log("this.tplist",this.tpList)
+        if(this.tpList.length !=0){
+          this.form.url=this.tpList[0].url }
+        else {
+          this.form.url= '';
+        }
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$confirm("是否新增心愿?", "提示", {
@@ -513,7 +563,7 @@
             })
               .then(() => {
                 addsp(this.form).then((res) => {
-                  if (res.result == "success") {
+                  if (res.status == "success") {
                     this.$message({
                       type: "success",
                       message: "新增成功!",
@@ -527,6 +577,7 @@
                     });
                   }
                 });
+                this.adddialog=false;
               })
               .catch(() => {
                 this.$message({
@@ -557,9 +608,13 @@
       //获取列表
       getlist () {
         splist(this.params).then((res) => {
-          if (res.result == "success") {
-            console.log("splist",res)
+          console.log("splist",res)
+          if (res.status == "success") {
             this.tableData = res.data.outmap.list;
+            for (let i = 0; i <this.tableData.length ; i++) {
+              this.tableData[i].url=config.apiUrl+this.tableData[i].url
+
+            }
             this.total = res.data.outmap.count;
           } else {
             this.total = 0

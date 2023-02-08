@@ -2,6 +2,10 @@ import * as ax from "../instrance";
 import config from "../../../config/config.js";
 var URL = config.apiUrl;
 //发布心愿
+export const getname = params => {
+  return ax.pJson(URL + "/wish/addwish", params);
+};
+//发布心愿没有用到
 export const addWish = params => {
   return ax.pJson(URL + "/wish/addwish", params);
 };

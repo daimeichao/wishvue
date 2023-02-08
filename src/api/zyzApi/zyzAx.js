@@ -17,4 +17,12 @@ export const getById = params => {
 export const shById = params => {
   return ax.pJson(URL + "/zyz/shById", params);
 };
+//编辑志愿者
+export const updById = params => {
+  return ax.pJson(URL + "/zyz/updById", params);
+};
+//新增志愿者
+export const addzyz = params => {
+  return ax.pJson(URL + "/zyz/addzyz", params);
+};
 

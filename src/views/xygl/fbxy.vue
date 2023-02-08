@@ -68,7 +68,7 @@
 
 <script>
   import {
-    addWish,
+    getname,
     addWish1,
   } from "../../api/xygl/xyglAx";
   export default {
@@ -170,7 +170,7 @@
       },
       getname(){
 
-        addWish().then((res) => {
+        getname().then((res) => {
           this.namelist=res.name;
         })},
       //查找名字

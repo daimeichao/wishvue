@@ -362,7 +362,6 @@
   import {
     updSX,
     updatesort,
-    addWish,
     updateWish,
     deleteWish,
    wishlist,
@@ -951,40 +950,40 @@
       closeWindow03 () {
         this.sxVisible = false;
       },
-      onSubmit (formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.$confirm("是否新增心愿?", "提示", {
-              confirmButtonText: "确定",
-              cancelButtonText: "取消",
-              type: "warning",
-            })
-              .then(() => {
-                addWish(this.form).then((res) => {
-                  if (res.result == "success") {
-                    this.$message({
-                      type: "success",
-                      message: "新增成功!",
-                    });
-                    this.dialogVisible = false;
-                    this.getWishList();
-                  } else {
-                    this.$message({
-                      type: "error",
-                      message: "新增失败，请联系管理员!",
-                    });
-                  }
-                });
-              })
-              .catch(() => {
-                this.$message({
-                  type: "info",
-                  message: "已取消新增",
-                });
-              });
-          }
-        });
-      },
+      // onSubmit (formName) {
+      //   this.$refs[formName].validate((valid) => {
+      //     if (valid) {
+      //       this.$confirm("是否新增心愿?", "提示", {
+      //         confirmButtonText: "确定",
+      //         cancelButtonText: "取消",
+      //         type: "warning",
+      //       })
+      //         .then(() => {
+      //           addWish(this.form).then((res) => {
+      //             if (res.result == "success") {
+      //               this.$message({
+      //                 type: "success",
+      //                 message: "新增成功!",
+      //               });
+      //               this.dialogVisible = false;
+      //               this.getWishList();
+      //             } else {
+      //               this.$message({
+      //                 type: "error",
+      //                 message: "新增失败，请联系管理员!",
+      //               });
+      //             }
+      //           });
+      //         })
+      //         .catch(() => {
+      //           this.$message({
+      //             type: "info",
+      //             message: "已取消新增",
+      //           });
+      //         });
+      //     }
+      //   });
+      // },
       //搜索
       search () {
         this.params.wish_audit_state = '';
