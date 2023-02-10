@@ -38,6 +38,13 @@
         z-index: 2000;
         background: #0061ac;
       " id="logo_top">
+      <img src="../../imges/zyz.png" style="
+            float: left;
+            height: 100%;
+            margin-top: 0px;
+            margin-right: 43px;
+            margin-left: 13px;
+          " />
       <span style="font-size: 36px;color:#FFFFFF;font-family: Lucida Calligraphy, cursive, serif, sans-serif;font-weight: bolder;"> 社区志愿后端管理</span>
 <!--      <img src="../../../src/imges/wxy/logo白.png" style="float: left;-->
 <!--    height: 56px;-->
