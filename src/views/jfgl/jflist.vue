@@ -59,7 +59,7 @@
       </el-col>
     </el-row>
     <el-row>
-      <div style="  background: rgb(255, 255, 255);
+      <div style="  background: rgb(255, 255, 255);font-size: 18px;
     margin-top: 0.7vw;
     margin-left: 0vw;
     width: 97.8%;
@@ -73,22 +73,14 @@
               width="50px"
               align="center">
             </el-table-column>
-            <el-table-column prop="username" label="用户名" width="130px"> </el-table-column>
+            <el-table-column prop="name" label="用户名" width="130px"> </el-table-column>
             <el-table-column prop="change" label="增减" width="130px">
               <template slot-scope="scope"width="130px">
-                            <span v-if="scope.row.change == '0'">新增</span>
+                            <span v-if="scope.row.change == '0'" style="text-align:center;font-size: 18px;color: #308917;">新增</span>
                             <span v-if="scope.row.change== '1'">消费</span>
                           </template>
             </el-table-column>
-            <el-table-column prop="score" label="积分数" width="130px"> </el-table-column>
-            <el-table-column prop="jf_audit_state" label="审核状态" width="130px">
-              <template slot-scope="scope"width="130px">
-                            <span v-if="scope.row.jf_audit_state == '0'">待审核</span>
-                            <span v-if="scope.row.jf_audit_state== '1'">审核通过</span>
-                <span v-if="scope.row.jf_audit_state == '2'">审核不通过</span>
-                          </template>
-            </el-table-column>
-            <el-table-column prop="jf_audit_remark" label="审核备注" width="130px"> </el-table-column>
+            <el-table-column prop="changenum" label="变化积分数" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
                 <btn :flag="5" @click.native="detail(scope.row)"></btn>
@@ -106,26 +98,21 @@
       </div>
     </el-row>
     <!-- 详情表单 -->
-    <div class="dialog_out">
+    <div class="dialog_out" style="font-size: 18px">
       <el-dialog :title="title" :visible.sync="detailVisible" :before-close="closeWindow02" :modal-append-to-body="false">
         <el-form :model="form" label-width="150px" :label-position="labelPosition" ref="ruleForm">
           <el-form-item label="用户名:" prop="username">
             <span >{{ form.name}}</span>
           </el-form-item>
-          <el-form-item label="积分数目:" prop="score">
-            <span >{{ form.score }}</span>
-          </el-form-item>
           <el-form-item label="变化:" prop="change">
             <span  v-if=" form.change=='0'" >增加积分</span>
             <span  v-if=" form.change=='1'" >消费积分</span>
           </el-form-item>
-          <el-form-item label="审核状态:" prop=" jf_audit_state" >
-            <span  v-if=" form. jf_audit_state == '0'">待审核</span>
-            <span  v-if="form. jf_audit_state == '1'">审核通过</span>
-            <span  v-if="form. jf_audit_state == '2'">审核不通过</span>
+          <el-form-item label="变化积分:" prop=" changenum" >
+            <span>{{form.changenum}}</span>
           </el-form-item>
-          <el-form-item label="审核备注:" prop="wish_audit_remark" >
-            <span >{{ form.jf_audit_remark?form.jf_audit_remark:'无'}}</span>
+          <el-form-item label="积分来源备注:" prop="wish_audit_remark" >
+            <span >{{ form.jf_origin?form.jf_origin:'无'}}</span>
           </el-form-item>
           <el-form-item label="新增时间:" prop="add_time">
             <span >{{ form.add_time }}</span>
@@ -233,7 +220,7 @@
           pid: row.jid,
         };
         getById(sc).then((res) => {
-          this.form=res.map
+          this.form=res.data.outmap.map
           this.detailVisible = true;
         });
       },

@@ -5,6 +5,14 @@ var URL = config.apiUrl;
 export const jflist = params => {
   return ax.pJson(URL + "/jf/jflist", params);
 };
+//获取积分排行榜
+export const getphb = params => {
+  return ax.pJson(URL + "/jf/getphb", params);
+};
+//删除一行积分排行榜
+export const delphb = params => {
+  return ax.pJson(URL + "/jf/delphb", params);
+};
 //删除积分者
 export const delById = params => {
   return ax.pJson(URL + "/jf/delById", params);

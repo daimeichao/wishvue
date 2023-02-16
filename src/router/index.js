@@ -164,6 +164,11 @@ export default new Router({
           name: "积分列表",
           component: reslove => require(["@/views/jfgl/jflist"], reslove)
         },
+        {
+          path: "jfphb",
+          name: "积分排行榜",
+          component: reslove => require(["@/views/jfgl/jfphb"], reslove)
+        },
       ]
     },
     {

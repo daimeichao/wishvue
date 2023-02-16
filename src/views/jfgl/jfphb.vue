@@ -73,21 +73,11 @@
               width="50px"
               align="center">
             </el-table-column>
-            <el-table-column prop="zyzname" label="用户名" width="130px"> </el-table-column>
-            <el-table-column prop="reason" label="申请原因" width="130px"> </el-table-column>
-            <el-table-column prop="zyz_audit_state" label="审核状态" width="130px">
-              <template slot-scope="scope"width="130px">
-                            <span v-if="scope.row.zyz_audit_state == '0'">待审核</span>
-                            <span v-if="scope.row.zyz_audit_state== '1'">审核通过</span>
-                <span v-if="scope.row.zyz_audit_state == '2'">审核不通过</span>
-                          </template>
-            </el-table-column>
-            <el-table-column prop="zyz_audit_remark" label="审核备注" width="130px"> </el-table-column>
+            <el-table-column prop="name" label="用户名" width="130px"> </el-table-column>
+            <el-table-column prop="zf" label="积分数" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                  <btn :flag="9" @click.native="update(scope.row)"></btn>
                 <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
-
               </template>
             </el-table-column>
           </el-table>
@@ -98,114 +88,18 @@
         </template>
       </div>
     </el-row>
-    <!-- 详情表单 -->
-    <div class="dialog_out">
-      <el-dialog :title="title" :visible.sync="detailVisible" :before-close="closeWindow02" :modal-append-to-body="false">
-        <el-form :model="form" label-width="150px" :label-position="labelPosition" ref="ruleForm">
-          <el-form-item label="用户名:" prop="username">
-            <span >{{ form.name}}</span>
-          </el-form-item>
-          <el-form-item label="申请原因:" prop="reason">
-            <span >{{ form.reason }}</span>
-          </el-form-item>
-          <el-form-item label="申请时间:" prop="sq_time">
-            <span >{{ form.sq_time }}</span>
-          </el-form-item>
-          <el-form-item label="审核状态:" prop=" jf_audit_state" >
-            <span  v-if=" form. zyz_audit_state == '0'">待审核</span>
-            <span  v-if="form. zyz_audit_state == '1'">审核通过</span>
-            <span  v-if="form. zyz_audit_state == '2'">审核不通过</span>
-          </el-form-item>
-          <el-form-item label="审核备注:" prop="wish_audit_remark" >
-            <span >{{ form.zyz_audit_remark?form.zyz_audit_remark:'无'}}</span>
-          </el-form-item>
-          <el-form-item label="新增时间:" prop="add_time">
-            <span >{{ form.add_time }}</span>
-          </el-form-item>
-          <el-form-item label="审核人:" prop="claimant">
-            <span >{{ form.zyz_auditid?form.zyz_auditid:'无'}}</span>
-          </el-form-item>
-        </el-form>
-        <div class="dialog-footer" style="text-align: right">
-      <span slot="footer" class="dialog-footer" style="text-align: right ; ">
-    <button style="
-    margin-left: 80%;
-              width: 4vw;
-              height: 2vw;
-              border: 1px solid #a7a8aa;
-              background-color: #a7a8aa;
-              color: #ffffff;
-              border-radius: 0.3vw;
-              font-size: 0.85vw;
-            " @click="closeWindow02">
-      <div style="">取消</div>
-    </button>
-      </span></div>
-        <div style="height: 0px; clear: both"></div></el-dialog></div>
-    <!-- 审核-->
-    <div class="dialog_out">
-      <el-dialog :title="title" :visible.sync="dialogVisible" :before-close="closeWindow" :modal-append-to-body="false">
-        <el-form ref="roleData" :model="form" :rules="rules" label-width="120px">
-          <el-form-item label="志愿者姓名:" prop="username">
-            <span >{{ form.name}}</span>
-          </el-form-item>
-          <el-form-item label="申请原因:" prop="reason1">
-            <span >{{ form.reason }}</span>
-          </el-form-item>
-          <el-form-item label="申请时间:" prop="sq_time1">
-            <span >{{ form.sq_time }}</span>
-          </el-form-item>
-          <el-form-item label="审核状态:" prop="zyz_audit_state">
-            <el-select v-model="form.zyz_audit_state" placeholder="请选择审核状态" clearable style="width:50%;margin-right:10px;">
-              <el-option v-for="item in  zyz_audit_state" :key="item.value" :label="item.label" :value="item.value">
-              </el-option>
-            </el-select></el-form-item>
-          <el-form-item label="审核备注:" prop="zyz_audit_remark" v-if="form.zyz_audit_state==='2'">
-            <el-input v-model="form.zyz_audit_remark" placeholder="请输入" maxlength="200" clearable style="width: 50%">
-            </el-input>
-          </el-form-item>
-        </el-form>
-        <div style="width: 12vw; float: right">
-          <button style="
-    margin-left: 80%;
-              width: 4vw;
-              height: 2vw;
-              border: 1px solid #a7a8aa;
-              background-color: #a7a8aa;
-              color: #ffffff;
-              border-radius: 0.3vw;
-              font-size: 0.85vw;
-            " @click="closeWindow()">
-            <div style="">取消</div>
-          </button>
-          <button style="
-              width: 4vw;
-              height: 2vw;
-              border: 1px solid #0061ac;
-              background-color: #0061ac;
-              color: #ffffff;
-              border-radius: 0.3vw;
-              font-size: 0.85vw;
-            " @click="onUpdate('roleData')" v-if="type == 2">
-            <div style="">提交</div>
-          </button></div>
-        <div style="height: 0px; clear: both"></div>
-      </el-dialog></div>
+
   </div>
 </template>
 
 <script>
   import {
-    zyzlist,
-    delById,
-    getById,
-    shById
-  } from "../../api/zyzApi/zyzAx";
-  import {getname} from "../../api/xygl/xyglAx";
+    getphb,
+    delphb,
+  } from "../../api/jf/jfAx";
   export default {
     data () {
       return {
-        namelist:[],
         minheight: "",
         dialogImageUrl: '',
         treeLoading: true,
@@ -220,39 +114,15 @@
         detailVisible: false,
         loading: false,
         tableData: [],
-        zyz_audit_state: [
-          {value: '0',
-            label: '待审核'},
-          {
-            value: '1',
-            label: '审核通过'
-          },
-          {
-            value: '2',
-            label: '审核不通过'
-          }],
         params: {
-          zyz_audit_state:'',
           name:'',
           curpage: 1,
           pagesize: 10,
         },
         total: 0,
         rules: {
-            zyzid: [
-              {required: true, message: "请选择昵称", trigger: "blur"},],
-            tx: [
-              {required: true, message: "请上传头像", trigger: "blur"},],
-            zyzname: [
-              {required: true, message: "请输入志愿者姓名", trigger: "blur"},],
-            sq_time: [
-              {required: true, message: "请选择申请时间", trigger: "blur"},],
-            reason: [
-              {required: true, message: "请输入申请原因", trigger: "blur"},],
-            zyz_audit_state: [
-              {required: true, message: "请输入审核状态", trigger: "blur"},],
-            zyz_audit_remark: [
-              {required: true, message: "请输入备注", trigger: "blur"},],
+          sort: [
+            { required: true, message: "请输入排序", trigger: "blur" },],
         },
       };
     },
@@ -260,7 +130,7 @@
       //删除
       deleteDi (row) {
         let cs = {
-          pid: row.zid,
+          userid: row.userid,
         };
         this.$confirm("是否删除该条认领信息?", "提示", {
           confirmButtonText: "确定",
@@ -268,7 +138,7 @@
           type: "warning",
         })
           .then(() => {
-            delById(cs).then((res) => {
+            delphb(cs).then((res) => {
               if (res.status == "success") {
                 this.$message({
                   type: "success",
@@ -294,78 +164,7 @@
             });
           });
       },
-      clearForm () {
-        this.$refs.upload.clearFiles();
-      },
-      //打开编辑页面
-      update (row) {
-        this.$refs.upload && this.clearForm()
-        this.type = 2;
-        this.title = "审核志愿者申请";
-        let sc = {
-          pid: row.zid,
-        };
-        getById(sc).then((res) => {
-          this.form=res.data.outmap.map;
-          for (let i = 0; i <this.namelist.length ; i++) {
-            if(this.namelist[i].pid==this.form.zyz_auditid){
-              this.form.zyz_auditid=this.namelist[i].name;
-            }
-          }
-          console.log("updres",res)
-          this.form.zyz_auditid=localStorage.getItem("pid");
-          this.dialogVisible = true;
-        });
-      },
-      //点击编辑页面的修改按钮
-      onUpdate (formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.$confirm("是否审核?", "提示", {
-              confirmButtonText: "确定",
-              cancelButtonText: "取消",
-              type: "warning",
-            })
-              .then(() => {
-                shById(this.form).then((res) => {
-                  if (res.status == "success") {
-                    this.$message({
-                      type: "success",
-                      message: "审核成功!",
-                    });
-                    this.dialogVisible = false;
-                    this.handleCurrentChange(this.params.curpage);
-                  } else {
-                    this.$message({
-                      type: "error",
-                      message: "审核失败，请联系管理员!",
-                    });
-                    this.dialogVisible = false;
-                  }
-                });
-              })
-              .catch(() => {
-                this.$message({
-                  type: "info",
-                  message: "已取消审核",
-                });
-              });
-          }
-        });
-      },
-      //关闭新增框或编辑框
-      closeWindow () {
-        this.$nextTick(() => {
-          let af = this.$refs['roleData']
-          if (af) {
-            af.clearValidate()
-          }
-        });
-        this.dialogVisible = false;
-      },
-      closeWindow02 () {
-        this.detailVisible = false;
-      },
+
       onSubmit (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -416,10 +215,9 @@
       },
       //获取列表
       getlist () {
-        this.params.zyz_audit_state='0'
-        zyzlist(this.params).then((res) => {
+        getphb(this.params).then((res) => {
           if (res.status == "success") {
-            console.log("jflist",res)
+            console.log("getphb",res)
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;
           } else {
@@ -428,11 +226,6 @@
           this.loading = false;
         });
       },
-      //获取名字list
-      getname(){
-        getname().then((res) => {
-          this.namelist=res.name;
-        })},
       // 显示数
       handleSizeChange (val) {
         this.params.pagesize = val;
@@ -448,7 +241,6 @@
     },
     //初始渲染
     created () {
-      this.getname();
       this.getlist();
       // this.getYhAndCompList();获取单位列表
     },
