@@ -37,15 +37,18 @@
                 </div>
 
                 <div class="disFlexCenter" style="margin-top: 5px">
-                  <button style="background-color: rgb(0, 97, 172)" @click="search()">
+                  <el-button type="primary"  icon="el-icon-search" @click="search()">搜索</el-button>
+                  <!-- <button style="background-color: rgb(0, 97, 172)" @click="search()">
                     搜索
-                  </button>
-                  <button style="background-color: rgb(30, 185, 136)" @click="reset()">
+                  </button> -->
+                  <el-button type="primary" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
+                  <!-- <button style="background-color: rgb(30, 185, 136)" @click="reset()">
                     重置
-                  </button>
-                  <button style="background-color: rgb(0, 97, 172)" @click="addzyz()">
+                  </button> -->
+                  <el-button type="success"  icon="el-icon-circle-plus-outline" @click="addzyz()">新增</el-button>
+                  <!-- <button style="background-color: rgb(0, 97, 172)" @click="addzyz()">
                     新增
-                  </button>
+                  </button> -->
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>
@@ -85,7 +88,7 @@
             </el-table-column>
             <el-table-column prop="reason" label="申请原因" width="130px"> </el-table-column>
             <el-table-column prop="jf_audit_state" label="审核状态" width="130px">
-              <template slot-scope="scope"width="130px">
+              <template slot-scope="scope" width="130px">
                             <span v-if="scope.row.zyz_audit_state == '0'">待审核</span>
                             <span v-if="scope.row.zyz_audit_state== '1'">审核通过</span>
                 <span v-if="scope.row.zyz_audit_state == '2'">审核不通过</span>
@@ -94,9 +97,12 @@
             <el-table-column prop="zyz_audit_remark" label="审核备注" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                <btn :flag="5" @click.native="detail(scope.row)"></btn>
-                <btn :flag="1" @click.native="update(scope.row)"></btn>
-                <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
+                <el-button size="mini" type="primary" @click.native="detail(scope.row)">查看</el-button>
+                <el-button size="mini" type="primary" @click.native="update(scope.row)">编辑</el-button>
+                <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
+                <!-- <btn :flag="5" @click.native="detail(scope.row)"></btn> -->
+                <!-- <btn :flag="1" @click.native="update(scope.row)"></btn>
+                <btn :flag="2" @click.native="deleteDi(scope.row)"></btn> -->
 
               </template>
             </el-table-column>
@@ -111,7 +117,7 @@
     <!--    新增和编辑弹窗-->
     <div class="dialog_out">
       <el-dialog :title="title" :visible.sync="adddialog" :before-close="closeWindow02" :modal-append-to-body="false">
-        <el-form :model="form" :rules="rules"label-width="150px" :label-position="labelPosition" ref="roleData1">
+        <el-form :model="form" :rules="rules" label-width="150px" :label-position="labelPosition" ref="roleData1">
           <el-form-item label="发布人昵称:" prop="wishuserid" style="padding-top: 20px" >
             <el-select  v-model='form.zyzid' placeholder="请选择昵称(姓名)" clearable @change="getName()">
               <el-option  v-for='item in namelist' :key='item.id'
@@ -161,7 +167,7 @@
               color: #ffffff;
               border-radius: 0.3vw;
               font-size: 0.85vw;
-            "@click="closeWindow02()">
+            " @click="closeWindow02()">
       <div style="">取消</div>
     </button>
           <button v-if="type==2" style="
@@ -186,8 +192,10 @@
               font-size: 0.85vw;
             "  @click="onSubmit('roleData1')">
       <div style="">新增</div>
+
             <div style="height: 0px; clear: both"></div>
           </button>
+          
         </span></div></el-dialog></div>
 
     <!-- 详情表单 -->
