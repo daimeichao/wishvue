@@ -47,12 +47,9 @@
                 </div>
 
                 <div class="disFlexCenter" style="margin-top: 5px">
-                  <button style="background-color: rgb(0, 97, 172)" @click="handleFilter">
-                    搜索
-                  </button>
-                  <button style="background-color: rgb(30, 185, 136)" @click="handleReset">
-                    重置
-                  </button>
+                  <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="handleFilter">搜索</el-button>
+                  <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="handleReset">重置</el-button>
+
                   <!-- <button style="background-color: rgb(50, 161, 247)" @click="ins">
                     新增用户
                   </button> -->

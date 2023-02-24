@@ -37,12 +37,9 @@
                 </div>
 
                 <div class="disFlexCenter" style="margin-top: 5px">
-                  <button style="background-color: rgb(0, 97, 172)" @click="search()">
-                    搜索
-                  </button>
-                  <button style="background-color: rgb(30, 185, 136)" @click="reset()">
-                    重置
-                  </button>
+                  <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
+                  <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
+
                   <button style="background-color: rgb(0, 97, 172)" @click="addsp()">
                     新增
                   </button>
@@ -93,7 +90,8 @@
             <el-table-column label="操作" min-width="200">
               <template slot-scope="scope">
                 <btn :flag="5" @click.native="detail(scope.row)"></btn>
-                <btn :flag="1" @click.native="update(scope.row)"></btn>
+                <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="update(scope.row)">编辑</el-button>
+<!--                <btn :flag="1" @click.native="update(scope.row)"></btn>-->
                 <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
 
               </template>

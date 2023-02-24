@@ -37,12 +37,9 @@
                 </div>
 
                 <div class="disFlexCenter" style="margin-top: 5px">
-                  <button style="background-color: rgb(0, 97, 172)" @click="search()">
-                    搜索
-                  </button>
-                  <button style="background-color: rgb(30, 185, 136)" @click="reset()">
-                    重置
-                  </button>
+                  <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
+                  <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
+
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>

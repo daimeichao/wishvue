@@ -1,6 +1,6 @@
 <template>
-  <div class='menu-wrapper' style="background-color: white; 
-	
+  <div class='menu-wrapper' style="background-color: white;
+
 	">
     <template v-for="item in routes">
       <el-submenu :index="item.sid" :key="item.sname" @click.native="openBig(item.sname)">
@@ -14,7 +14,7 @@
           <div style="cursor:pointer;" @click="handleClick(child.sid,child.slink,child.sname,item.sname)" v-if="child.slink!=null" :key="child.sname">
 
             <el-menu-item :index="'/'+item.sid+'/'+child.sid">
-              <div class='1' style="background-color: #E1F2FF;">
+              <div class='1' style="background-color: #e1fff1;color:#1D7E4D">
                 <i :class="child.sdesc"></i>
                 <span class=''>{{child.sname}}</span>
               </div>
@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      
+
       active: "",
       img1: require('../../imges/1.png'),
       img2: require('../../imges/4.png'),
@@ -57,7 +57,7 @@ export default {
     handleClick (sid, link, name, fname) {
       // alert(333)
       this.childMethod();
-      
+
       this.smallTitle = name
       this.$emit('smallTitle', this.smallTitle)
       this.$emit('bigTitle', fname)
@@ -92,10 +92,10 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 
 .el-menu-item {
-  background-color: #e1f2ff !important;
+  background-color: #e1fff1 !important;
 }
 .el-menu .el-menu--inline {
-  background-color: #ecf3f9 !important;
+  background-color: #e1fff1 !important;
 }
 //菜单关闭
 >>> .el-submenu > .el-submenu__title .el-submenu__icon-arrow {

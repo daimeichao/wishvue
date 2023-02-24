@@ -10,12 +10,9 @@
                   <el-col :span="4">
                     <el-input v-model="listQuery.LSMC" placeholder="请输入用户名称" maxlength="50" show-word-limit style="width: 98%"></el-input>
                   </el-col>
-                  <!-- <el-col :span="4">
-                    <el-input v-model="listQuery.LSID" placeholder="请输入用户职工号" maxlength="50" show-word-limit style="width: 98%"></el-input>
-                  </el-col> -->
                   <el-col>
-                    <button style=" background-color: rgb(0, 97, 172);line-height:1.9vw" @click="handleFilter">搜索</button>
-                    <button style="background-color: rgb(30, 185, 136);line-height:1.9vw" @click="handleReset">重置</button>
+                     <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search"  @click="handleFilter">搜索</el-button>
+                    <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right"  @click="handleReset">重置</el-button>
                     <button v-if="JSID!=13" style="background-color: rgb(50, 161, 247);line-height:1.9vw" @click="ins">新增</button>
                   </el-col>
                 </el-row>
@@ -37,7 +34,7 @@
             <div style="margin-top: 10px; border: 0px solid #d8dce5" class="bg-purple filter-container calendar-list-container">
               <el-col :span="24">
                 <div calss="bg-purple filter-container app-container3  calendar-list-container" style="line-height: 25px">
-                  <el-table stripe border :key="tableKey" :data="lslist" ref="listdata" style="width: 100%;" highlight-current-row v-loading="loading" 
+                  <el-table stripe border :key="tableKey" :data="lslist" ref="listdata" style="width: 100%;" highlight-current-row v-loading="loading"
                     element-loading-text="加载中"
                     element-loading-spinner="el-icon-loading"
                     element-loading-background="rgba(255, 255, 255)" header-row-class-name="tableHead" cell-class-name="tableHead" :header-cell-style="{ background: '#f2f2f3' }" :cell-style="{ padding: '8px' }">
@@ -183,7 +180,7 @@ export default {
     },
     //获取可绑定用户列表
     getTeacher () {
-      let cs = { 
+      let cs = {
         JSID: this.JSID
       };
       getAllTeacher(cs).then((res) => {

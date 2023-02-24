@@ -4,8 +4,8 @@
 
       <el-input v-model="params.claimant" placeholder="输入认领人姓名" clearable style="width:15%;margin-right:10px;margin-left: 20px;">
       </el-input>
-      <el-button class="btnB" icon="el-icon-search" @click="search()">搜索</el-button>
-      <el-button icon="el-icon-refresh" class="btnR" @click="reset()">重置</el-button>
+      <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
+      <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
       <el-button class="btnB" icon="el-icon-plus" @click="add()">新增</el-button>
       </div>
     <el-row>
@@ -33,8 +33,7 @@
         <el-table-column v-if="isOpenSendBack" label="操作" width="180px">
           <template slot-scope="scope">
             <div class="link_out">
-              <el-link type="primary" :underline="false" @click="updata(scope.row)">
-                编辑</el-link>
+              <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="updata(scope.row)">编辑</el-button>
               <el-link type="primary" :underline="false" @click="detail(scope.row)">
                 详情</el-link>
               <el-link type="primary" :underline="false" @click="deleteDi(scope.row)">

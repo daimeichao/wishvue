@@ -47,12 +47,8 @@
                 </div>
 
                 <div class="disFlexCenter" style="margin-top: 5px">
-                  <button style="background-color: rgb(0, 97, 172)" @click="search()">
-                    搜索
-                  </button>
-                  <button style="background-color: rgb(30, 185, 136)" @click="reset()">
-                    重置
-                  </button>
+                  <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
+                  <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>
@@ -121,7 +117,8 @@
             <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
             <btn :flag="10" @click.native="sort(scope.row)"></btn>
             <!--            已通过审核且未认领的心愿则显示编辑-->
-            <btn :flag="1" v-if="scope.row.wish_state== '0'" @click.native="updata(scope.row)"></btn>
+<!--            <btn :flag="1" v-if="scope.row.wish_state== '0'" @click.native="updata(scope.row)"></btn>-->
+            <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="updata(scope.row)">编辑</el-button>
             <btn  v-show="scope.row.wish_audit_state == '1'&& scope.row.wish_state =='0'" flag="23"  @click.native="sxxy(scope.row)"></btn>
 <!--            <btn  v-show="scope.row.wish_audit_state == '1'" flag="1"  @click.native="sxxy(scope.row.XLH)"></btn>-->
 
@@ -950,40 +947,6 @@
       closeWindow03 () {
         this.sxVisible = false;
       },
-      // onSubmit (formName) {
-      //   this.$refs[formName].validate((valid) => {
-      //     if (valid) {
-      //       this.$confirm("是否新增心愿?", "提示", {
-      //         confirmButtonText: "确定",
-      //         cancelButtonText: "取消",
-      //         type: "warning",
-      //       })
-      //         .then(() => {
-      //           addWish(this.form).then((res) => {
-      //             if (res.result == "success") {
-      //               this.$message({
-      //                 type: "success",
-      //                 message: "新增成功!",
-      //               });
-      //               this.dialogVisible = false;
-      //               this.getWishList();
-      //             } else {
-      //               this.$message({
-      //                 type: "error",
-      //                 message: "新增失败，请联系管理员!",
-      //               });
-      //             }
-      //           });
-      //         })
-      //         .catch(() => {
-      //           this.$message({
-      //             type: "info",
-      //             message: "已取消新增",
-      //           });
-      //         });
-      //     }
-      //   });
-      // },
       //搜索
       search () {
         this.params.wish_audit_state = '';

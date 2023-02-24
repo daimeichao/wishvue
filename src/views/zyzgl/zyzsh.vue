@@ -37,14 +37,8 @@
                 </div>
 
                 <div class="disFlexCenter" style="margin-top: 5px">
-                  <el-button type="primary"  icon="el-icon-search" @click="search()">搜索</el-button>
-                  <!-- <button style="background-color: rgb(0, 97, 172)" @click="search()">
-                    搜索
-                  </button> -->
-                  <el-button type="primary" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
-                  <!-- <button style="background-color: rgb(30, 185, 136)" @click="reset()">
-                    重置
-                  </button> -->
+                  <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
+                  <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>
@@ -87,7 +81,7 @@
             <el-table-column prop="zyz_audit_remark" label="审核备注" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                <el-button size="mini" type="primary" @click.native="update(scope.row)">审核</el-button>
+                <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="update(scope.row)">审核</el-button>
                 <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
                   <!-- <btn :flag="9" @click.native="update(scope.row)"></btn>
                 <btn :flag="2" @click.native="deleteDi(scope.row)"></btn> -->

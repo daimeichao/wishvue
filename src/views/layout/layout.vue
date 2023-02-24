@@ -36,7 +36,7 @@
         width: 100%;
         height: 65px;
         z-index: 2000;
-        background: #0061ac;
+        background: #63B184;
       " id="logo_top">
       <img src="../../imges/zyz.png" style="
             float: left;
@@ -45,12 +45,10 @@
             margin-right: 43px;
             margin-left: 13px;
           " />
-      <span style="font-size: 36px;color:#FFFFFF;font-family: Lucida Calligraphy, cursive, serif, sans-serif;font-weight: bolder;"> 社区志愿后端管理</span>
-<!--      <img src="../../../src/imges/wxy/logo白.png" style="float: left;-->
-<!--    height: 56px;-->
-<!--    padding-top: 10px;-->
-<!--    padding-left: 5px;" />-->
-      <div style="float: right; margin-right: 30px">
+      <div style="margin-top: 1.2vw">
+      <span style="font-size: 36px;color:#FFFFFF;font-family: Lucida Calligraphy, cursive, serif, sans-serif;font-weight: bolder;"> 社区志愿后端管理
+      </span>
+        <div style="float: right; margin-right: 30px">
         <div @click="logout" style="
             cursor: pointer;
             color: #fff;
@@ -106,7 +104,8 @@
       <!-- <div style="float:right">
 				  <img src="../../imges/xx.jpg"  style="float:right;height:64px;"/>
 			</div> -->
-    </div>
+      </div>  </div>
+
     <sidebar v-show="ishow" class="sidebar-container" style="margin-top: 65px" @hiddlen="hiddlen" @bigTitle="bigTitle"
       @smallTitle="smallTitle" ref="sidebar"></sidebar>
 
@@ -394,7 +393,7 @@ export default {
     overflow: hidden;
     height: 70px;
     line-height: 70px;
-    background-color: #0075b8;
+    background-color: #63B184;
     position: fixed;
     height: auto;
     overflow-y: auto;
@@ -556,7 +555,7 @@ export default {
 }
 
 .noUrl /deep/ .el-breadcrumb__inner {
-  color: #32a1f7;
+  color: #72d3a3;
   font-weight: 400;
 }
 </style>
