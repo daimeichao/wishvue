@@ -1,11 +1,13 @@
 <template>
   <div class="index-container">
     <div class="loginFrame">
-      <div class="logoImgs"></div>
+      <div class="logoImgs">
+<!--        <div class="zuo"></div>-->
+      </div>
     </div>
 
     <div class="loginbox">
-      <div class="img_mtlogo"></div>
+      <div class="img_mtlogo">志愿服务</div>
       <p class="yhdl">用户登录</p>
       <div class="loginform" @keydown.enter="login">
         <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
@@ -31,7 +33,8 @@
       </div>
     </div>
 
-    <img class="loginbg" src="../../imges/login/背景.png" />
+<!--    <img class="loginbg" src="../../imges/login/背景.png" />-->
+    <div class="loginbg"> </div>
   </div>
 </template>
 <script>
@@ -167,8 +170,9 @@ export default {
 }
 
 .loginFrame {
-  /* background-image: url(../../imges/login/框.png); */
-  background-color: white;
+   background-image: url(../../imges/login/背景.jpg);
+  /*background-color: white;*/
+  /*background-color: #008F93;*/
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: absolute;
@@ -180,7 +184,8 @@ export default {
 }
 
 .logoImgs {
-  background-image: url(../../imges/wxy/左侧图片.png);
+  background-image: url(../../imges/login/团队-8.png);
+  /*background-color: #f19f4d;*/
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: absolute;
@@ -188,18 +193,37 @@ export default {
   width: 50%;
   height: 100%;
 }
+.zuo{
+  /*background-color: #f9cf00;*/
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  margin-top: 5vw;
+  margin-left: 5vw;
+}
 .loginbox {
   position: absolute;
   right: 10%;
   top: 14%;
+  /*background-image: url("../../imges/login/you.jpg") ;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: 100% 100%;*/
+
   /* background-color: beige; */
   width: 38%;
   height: 70%;
   color: #000;
+  /*background-color: #FECDC2;*/
 }
 
 .img_mtlogo {
-  background-image: url("../../imges/wxy/logo黑.png");
+  /*background-image: url("../../imges/wxy/logo黑.png");*/
+  color:#FFFFFF ;
+  font-size: 3vw;
+  font-weight: 700;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: absolute;
@@ -214,7 +238,8 @@ export default {
   left: 8%;
   top: 25%;
   /* background: #fff; */
-  color: rgb(46, 91, 174);
+  /*color: rgb(46, 91, 174);*/
+  color: #FFFFFF;
   font-size: 1.5vw;
   font-weight: 700;
   width: 80%;
@@ -397,6 +422,12 @@ export default {
   height: 100%;
   width: 100%;
   position: absolute;
+  /*background-color: #BFD8D2;*/
+  /*background-image: url(../../imges/login/背景.jpg);*/
+  background-image: url("../../imges/login/背景.jpg") ;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
   top: 0;
   left: 0;
   z-index: -1;

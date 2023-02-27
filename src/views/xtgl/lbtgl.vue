@@ -82,8 +82,8 @@
                         </el-table-column>
                         <el-table-column label="操作" min-width="100">
                             <template slot-scope="scope">
-                                <btn :flag="1" @click.native="editBanner(scope.row.pid)"></btn>
-                                <btn :flag="2" @click.native="del(scope.row)"></btn>
+                              <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="editBanner(scope.row.pid)">编辑</el-button>
+                              <el-button size="mini" type="danger" @click.native="del(scope.row)">删除</el-button>
                             </template>
                         </el-table-column>
                     </el-table>

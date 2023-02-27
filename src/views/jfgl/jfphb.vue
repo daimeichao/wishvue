@@ -74,7 +74,7 @@
             <el-table-column prop="zf" label="积分数" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
+                <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
               </template>
             </el-table-column>
           </el-table>

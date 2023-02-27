@@ -83,9 +83,9 @@
             </el-table-column>
             <el-table-column label="操作" min-width="246">
               <template slot-scope="scope">
-                <btn :flag="1" @click.native="getJSxq(scope.row.XLH)"></btn>
-                <btn :flag="2" @click.native="del(scope.row)"></btn>
-                <btn :flag="4" @click.native="lslb(scope.row)"></btn>
+                <el-button size="mini"  type="primary" @click.native="getJSxq(scope.row.XLH)">查看</el-button>
+                <el-button size="mini" type="danger" @click.native="del(scope.row)">删除</el-button>
+                <el-button size="mini" style="background-color: #FFC0CB;color: #FFFFFF" @click="lslb(scope.row)">人员管理</el-button>
               </template>
             </el-table-column>
           </el-table>

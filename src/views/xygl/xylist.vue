@@ -110,20 +110,13 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="操作" min-width="350">
+        <el-table-column label="操作" min-width="370">
           <template slot-scope="scope">
-
-            <btn :flag="5" @click.native="detail(scope.row)"></btn>
-            <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
-            <btn :flag="10" @click.native="sort(scope.row)"></btn>
-            <!--            已通过审核且未认领的心愿则显示编辑-->
-<!--            <btn :flag="1" v-if="scope.row.wish_state== '0'" @click.native="updata(scope.row)"></btn>-->
+            <el-button size="mini"  type="primary" @click.native="detail(scope.row)">查看</el-button>
+            <el-button size="mini" style="background-color: #FFC0CB;color: #FFFFFF" @click="sort(scope.row)">排序</el-button>
             <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="updata(scope.row)">编辑</el-button>
-            <btn  v-show="scope.row.wish_audit_state == '1'&& scope.row.wish_state =='0'" flag="23"  @click.native="sxxy(scope.row)"></btn>
-<!--            <btn  v-show="scope.row.wish_audit_state == '1'" flag="1"  @click.native="sxxy(scope.row.XLH)"></btn>-->
-
-            <!-- <btn :flag="1001" @click.native="changeTypeFunc(scope.row.pid, '0', '普通用户')"
-              v-if="scope.row.lb === '1'"></btn> -->
+            <el-button size="mini" style="background-color: #ef8f19;color: #FFFFFF" v-show="scope.row.wish_audit_state == '1'&& scope.row.wish_state =='0'" @click.native="sxxy(scope.row)">审核</el-button>
+            <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
           </template>
         </el-table-column>
 

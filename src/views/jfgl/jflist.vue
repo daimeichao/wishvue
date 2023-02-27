@@ -80,9 +80,9 @@
             <el-table-column prop="changenum" label="变化积分数" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                <btn :flag="5" @click.native="detail(scope.row)"></btn>
-<!--                <btn :flag="1" @click.native="update(scope.row)"></btn>-->
-                <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
+                <el-button size="mini"  type="primary" @click.native="detail(scope.row)">查看</el-button>
+<!--                <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="update(scope.row)">编辑</el-button>-->
+                <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
 
               </template>
             </el-table-column>

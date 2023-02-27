@@ -91,10 +91,6 @@
                 <el-button size="mini"  type="primary" @click.native="detail(scope.row)">查看</el-button>
                 <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="update(scope.row)">编辑</el-button>
                 <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
-                <!-- <btn :flag="5" @click.native="detail(scope.row)"></btn> -->
-                <!-- <btn :flag="1" @click.native="update(scope.row)"></btn>
-                <btn :flag="2" @click.native="deleteDi(scope.row)"></btn> -->
-
               </template>
             </el-table-column>
           </el-table>

@@ -100,11 +100,9 @@
       <el-table-column prop="wish_time" label="许愿时间"> </el-table-column>
       <el-table-column label="操作" min-width="350">
         <template slot-scope="scope">
-    <btn :flag="5" @click.native="detail(scope.row)"></btn>
-<!--          编辑认领人信息-->
-<!--          <btn :flag="1" v-if="scope.row.claimant_audit_state!=='2'"  @click.native="upd(scope.row)"></btn>-->
-          <el-button size="mini" style="background-color: #63B184;color: #FFFFFF"v-if="scope.row.claimant_audit_state!=='2'" @click="upd(scope.row)">编辑</el-button>
-          <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
+          <el-button size="mini"  type="primary" @click.native="detail(scope.row)">查看</el-button>
+     <el-button size="mini" style="background-color: #63B184;color: #FFFFFF"v-if="scope.row.claimant_audit_state!=='2'" @click="upd(scope.row)">编辑</el-button>
+          <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
 
   </template>
       </el-table-column>

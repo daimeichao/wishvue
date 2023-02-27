@@ -43,7 +43,7 @@
                     <el-table-column prop="yhmc" label="用户名称" min-width="100" :show-overflow-tooltip="true"></el-table-column>
                     <el-table-column label="操作" fixed="right" min-width="150" v-if="JSID!=13">
                       <template slot-scope="scope">
-                        <btn :flag="2" @click.native="del(scope.row)"></btn>
+                        <el-button size="mini" type="danger" @click.native="del(scope.row)">删除</el-button>
                       </template>
                     </el-table-column>
                   </el-table>

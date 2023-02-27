@@ -85,8 +85,8 @@
         </el-table-column>
         <el-table-column label="操作" min-width="350">
           <template slot-scope="scope">
-            <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="updata(scope.row)">审核</el-button>
-            <btn :flag="2" @click.native="deleteDi(scope.row)"></btn>
+            <el-button size="mini" style="background-color: #ef8f19;color: #FFFFFF" @click="updata(scope.row)">审核</el-button>
+            <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>

@@ -109,10 +109,10 @@
 
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                <btn :flag="1" @click.native="editUser(scope.row.pid)"></btn>
-                <btn :flag="2" @click.native="del(scope.row)"></btn>
-                <btn :flag="999" @click.native="czmm(scope.row)"></btn>
-                <btn :flag="1002" @click.native="authorizeFunc(scope.row)"></btn>
+                <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="editUser(scope.row.pid)">编辑</el-button>
+                <el-button size="mini" type="danger" @click.native="del(scope.row)">删除</el-button>
+                <el-button size="mini" style="background-color: #4496d4;color: #FFFFFF" @click="czmm(scope.row)">重置密码</el-button>
+                <el-button size="mini" style="background-color: #FFC0CB;color: #FFFFFF" @click="authorizeFunc(scope.row)">授权管理</el-button>
                 <!-- <btn :flag="1001" @click.native="changeTypeFunc(scope.row.pid, '0', '普通用户')"
                   v-if="scope.row.lb === '1'"></btn> -->
               </template>

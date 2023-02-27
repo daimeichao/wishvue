@@ -81,10 +81,8 @@
             <el-table-column prop="zyz_audit_remark" label="审核备注" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
-                <el-button size="mini" style="background-color: #63B184;color: #FFFFFF" @click="update(scope.row)">审核</el-button>
+                <el-button size="mini" style="background-color: #ef8f19;color: #FFFFFF" @click="update(scope.row)">审核</el-button>
                 <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
-                  <!-- <btn :flag="9" @click.native="update(scope.row)"></btn>
-                <btn :flag="2" @click.native="deleteDi(scope.row)"></btn> -->
 
               </template>
             </el-table-column>
