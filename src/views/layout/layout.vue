@@ -328,9 +328,6 @@ export default {
 };
 </script>
 <style>
-#logo_top {
-  background: url(../../imges/home/top_bg.jpg);
-}
 </style>
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import "src/styles/mixin.scss";

@@ -10,8 +10,6 @@ import 'babel-polyfill'
 import router from './router'
 import Vuex from 'vuex';
 import ElementUI from 'element-ui';
-import btn from "./components/btn";
-Vue.component("btn", btn);
 ElementUI.Dialog.props.closeOnClickModal.default = false
 import 'babel-polyfill';//支持IE执行原生script
 
