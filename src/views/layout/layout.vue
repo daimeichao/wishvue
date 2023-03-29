@@ -18,17 +18,6 @@
         <!-- <el-breadcrumb-item>教室详情</el-breadcrumb-item> -->
       </el-breadcrumb>
     </div>
-    <!--
-    <div class="navBarshow" style="" v-if="big != '首页' && big != null && ishow == false">
-      <i class="el-icon-s-fold"  style="cursor:pointer;margin-top: 0.55vw;margin-right: 0.5vw;margin-left: 1vw;" @click="zzjmethod"></i>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item>{{big}}</el-breadcrumb-item>
-        <el-breadcrumb-item v-if="!breadcrumb" class="noUrl">{{smallName}}</el-breadcrumb-item>
-        <el-breadcrumb-item v-if="breadcrumb" @click.native="close" :to="{ path: breadUrl }">{{smallName}}</el-breadcrumb-item>
-        <el-breadcrumb-item v-if="breadcrumb" class="noUrl">{{breadName}}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div> -->
-
     <div style="
         position: fixed;
         top: 0;
@@ -45,10 +34,12 @@
             margin-right: 43px;
             margin-left: 13px;
           " />
-      <div style="margin-top: 1.2vw">
+      <div style="margin-top: 1.2vw;margin-left: 15vw">
       <span style="font-size: 36px;color:#FFFFFF;font-family: Lucida Calligraphy, cursive, serif, sans-serif;font-weight: bolder;"> 社区志愿后端管理
       </span>
-        <div style="float: right; margin-right: 30px">
+        <div style="position: fixed;top: 0;right: 1vw">
+          <div style="float: right; margin-right: 10px">
+<!--        <div style="float: right; margin-right: 30px">-->
         <div @click="logout" style="
             cursor: pointer;
             color: #fff;
@@ -61,46 +52,44 @@
             font-size: 14px;
             font-family: Microsoft YaHei, Microsoft YaHei-Regular;
           ">
-          <span style="margin-left: -12px">退出</span>
+          <span style="margin-left: -0.5vw;font-size: 20px;">退出</span>
         </div>
         <img @click="logout" src="../../imges/tc_01.png" style="
             cursor: pointer;
             float: right;
-            height: 28px;
-            margin-top: 25.5px;
-            margin-right: 16px;
-            width: 15px;
-            height: 15px;
+           margin-top: 1vw;
+            margin-right:1vw;
+            background-size: 100%;
+            width: 1.5vw;
+            height: 1.5vw;
           " />
         <img src="../../imges/yhm_01.png" style="
             float: left;
-            height: 26px;
-            margin-top: 19.5px;
-            margin-right: 43px;
-            margin-right: 13px;
+            height: 3vw;
+            width: 3vw;
+            margin-top: 0.2vw;
+            margin-right:1vw;
+            background-size: 100%
           " />
         <div style="
             color: #fff;
             float: left;
-            margin-top: 19.5px;
-            font-size: 14px;
+            margin-top: 1vw;
+            font-size: 20px;
             line-height: 26px;
             font-family: Microsoft YaHei, Microsoft YaHei-Regular;
-            margin-right: 11px;
+            margin-right: 1vw;
           ">
           {{ name }}
         </div>
         <img src="../../imges/line.png" style="
             float: left;
-            height: 26px;
-            margin-top: 25.5px;
-            margin-right: 43px;
-            margin-right: 11px;
-            width: 1px;
-            height: 13px;
-          " />
+            height: 2vw;
+            margin-top: 1vw;
+            margin-right: 1vw;
+             width: 1px; " />
       </div>
-
+        </div>
       <!-- <div style="float:right">
 				  <img src="../../imges/xx.jpg"  style="float:right;height:64px;"/>
 			</div> -->

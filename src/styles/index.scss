@@ -345,7 +345,7 @@ display: flex;
 justify-content: right;
 margin-top: 1vw;
 padding-bottom: 1vw;
-margin-left: 1vw;  
+margin-left: 1vw;
 }
 .blockPage button {
   max-width: 30px !important;
@@ -372,7 +372,7 @@ margin-left: 1vw;
   font-family: Microsoft YaHei, Microsoft YaHei-Bold;
   font-size: 14px !important;
   padding-left: 0.7vw;
-  
+
   // padding-right: 0px;
 
 
@@ -388,11 +388,11 @@ margin-left: 1vw;
 }
 .el-table{
 
-  
+
   font-size: 12px !important;
   color: #606266 !important;
   width: 97.5%;
-  
+
   margin-left: 1vw;
 
   // font-family: SimSun !important;
@@ -433,7 +433,7 @@ margin-left: 1vw;
   line-height: 20px;
   text-align: center;
 }
-  
+
 .td-name{
   border: 1px solid #e6ebf5;
   width: 15%;
@@ -445,8 +445,8 @@ margin-left: 1vw;
 
 .el-table td, .el-table th.is-leaf{
       border-bottom: 1px solid rgb(221,221,221) !important;
-      border-right: 1px solid rgb(221,221,221) !important;  
-      
+      border-right: 1px solid rgb(221,221,221) !important;
+
 }
  .el-table th.is-leaf{
   height: 3.5vw;
@@ -462,18 +462,18 @@ background: #EEE;
 }
 
 // .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed{
-//   border-right: 1px solid rgb(221,221,221) !important;  
+//   border-right: 1px solid rgb(221,221,221) !important;
 // }d
 
 body .el-table th.gutter{
-  display: table-cell!important;  
+  display: table-cell!important;
 
 }
 .el-button--small, .el-button--small.is-round{
   padding: 6px 8px !important;
 }
 .el-button--medium{
-  padding: 6px 8px !important;   
+  padding: 6px 8px !important;
 }
 
 .el-tooltip__popper.is-dark{
@@ -495,7 +495,7 @@ body .el-table th.gutter{
 
 .el-slider__button {
   border: 2px solid  #0061AC;
-  background-color: #FFF; 
+  background-color: #FFF;
 }
 .el-slider__bar {
   background-color: #0061AC;
@@ -510,14 +510,14 @@ body .el-table th.gutter{
 
 .el-menu {
   border-right: solid 1px #e6e6e6;
-  
+
   background-color: #e6e6e6;
 }
 
- 
+
 
 .el-table .el-table__cell{
-  padding: 3px 0 !important; 
+  padding: 3px 0 !important;
 
 }
 
@@ -568,7 +568,9 @@ align-items: center;
 }
 .el-button{
   border: 1px solid #DCDFE6 !important;
-  min-width:3vw !important
+  min-width:3vw !important;
+  padding: 7px 10px;
+  font-size: 16px;
 }
 .el-message-box__headerbtn{
   min-width:2vw !important

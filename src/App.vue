@@ -43,7 +43,7 @@ export default {
   //         localStorage.removeItem("userId")
   //         localStorage.removeItem("ifxzls")
 
-  //         location.replace('https://sso.fjcpc.edu.cn/ZAS/ssologout?Referer=https://appzb.fjcpc.edu.cn/zyzx-api/sso/zyzx_login') 
+  //         location.replace('https://sso.fjcpc.edu.cn/ZAS/ssologout?Referer=https://appzb.fjcpc.edu.cn/zyzx-api/sso/zyzx_login')
   //     }
   //   },
   // },
@@ -73,7 +73,7 @@ export default {
   created () {
     //this.lastTime = new Date().getTime();   //网页第一次打开时，记录当前时间
     // if(localStorage.getItem("userId")=="" || localStorage.getItem("userId")==null ||localStorage.getItem("userId")==undefined){
-    //     location.replace('https://sso.fjcpc.edu.cn/ZAS/ssologout?Referer=https://appzb.fjcpc.edu.cn/zyzx-api/sso/zyzx_login') 
+    //     location.replace('https://sso.fjcpc.edu.cn/ZAS/ssologout?Referer=https://appzb.fjcpc.edu.cn/zyzx-api/sso/zyzx_login')
     // }
   }
 }
@@ -107,7 +107,7 @@ div {
   //   background-color: #F5F5F5 !important;
 }
 .el-pagination.is-background .el-pager li:not(.disabled).active {
-  background-color: #5473e8;
+  background-color:#1b8275;
   color: #fff;
 }
 button {
