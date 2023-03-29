@@ -27,13 +27,19 @@
         z-index: 2000;
         background: #63B184;
       " id="logo_top">
-      <img src="../../imges/zyz.png" style="
+<!--      <img src="../../imges/下载加载.mp4" style="-->
+<!--            float: left;-->
+<!--            height: 3vw;-->
+<!--            width: 3vw;-->
+<!--            margin-top: 0.2vw;-->
+<!--            margin-right:1vw;-->
+<!--            background-size: 100%-->
+<!--          " />-->
+    <div  style="
             float: left;
-            height: 100%;
-            margin-top: 0px;
-            margin-right: 43px;
-            margin-left: 13px;
-          " />
+            margin-left: -2vw;
+            margin-top: -7vw;" >
+      <lottie :options="defaultOptions"  :height="300" :width="350" @animCreated="handleAnimation" /></div>
       <div style="margin-top: 1.2vw;margin-left: 15vw">
       <span style="font-size: 36px;color:#FFFFFF;font-family: Lucida Calligraphy, cursive, serif, sans-serif;font-weight: bolder;"> 社区志愿后端管理
       </span>
@@ -138,9 +144,12 @@
 </template>
 
 <script>
+  import lottie from 'vue-lottie'
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import AppMain from "./AppMain";
+import * as animationData from '../../imges/下载加载.json';
+
 
 import Cookies from "js-cookie";
 import { getToken, setToken, removeToken, getAllCookie } from "../../util/auth";
@@ -155,6 +164,7 @@ export default {
     Navbar,
     Sidebar,
     AppMain,
+    lottie,
   },
   computed: {
     sidebar() {
@@ -169,6 +179,7 @@ export default {
   },
   data() {
     return {
+      defaultOptions: { animationData: animationData },
       ishow: true,
       // name:'',
       dialogVisible: false,
@@ -211,6 +222,9 @@ export default {
     window.xxinfo = this.xxinfo;
   },
   methods: {
+    handleAnimation: function (anim) {
+      this.anim = anim;
+    },
     mouseover() {
       this.ishow = true;
     },
