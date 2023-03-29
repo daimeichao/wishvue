@@ -62,7 +62,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table :data="tableData" style="width: 90%; margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+          <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 90%;  margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column
               label="序号"
               type="index"
@@ -265,7 +265,7 @@
         })
           .then(() => {
             delById(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -324,7 +324,7 @@
             })
               .then(() => {
                 shById(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -414,7 +414,7 @@
       getlist () {
         this.params.zyz_audit_state='0'
         zyzlist(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             console.log("jflist",res)
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;

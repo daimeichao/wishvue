@@ -63,7 +63,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table :data="tableData" style="width: 90%; margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+          <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 90%;  margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column
               label="序号"
               type="index"
@@ -460,7 +460,7 @@
         })
           .then(() => {
             delById(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -548,7 +548,7 @@
             })
               .then(() => {
                 updById(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -606,7 +606,7 @@
               .then(() => {
                 addzyz(this.form).then((res) => {
                   console.log("addres",res)
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "新增成功!",
@@ -654,7 +654,7 @@
       //获取列表
       getlist () {
         zyzlist(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             console.log("jflist",res)
             this.tableData = res.data.outmap.list;
             for (let i = 0; i <this.tableData.length ; i++) {

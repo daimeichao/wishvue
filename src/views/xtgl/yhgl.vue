@@ -76,7 +76,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table ref="listdata" stripe v-loading="loading" element-loading-text="加载中"
+          <el-table ref="listdata" :header-cell-style="{background:'#e1fff1'}" stripe v-loading="loading" element-loading-text="加载中"
             element-loading-spinner="el-icon-loading" element-loading-background="rgba(255, 255, 255)" border
             :key="tableKey" :data="jslist" style="width: 97.6%">
             <!-- this.listQuery.pagesize = val;

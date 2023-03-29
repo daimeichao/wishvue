@@ -1,4 +1,27 @@
 <template>
+  <div>
+    <div style="width: 100%;height: 4vw;background-color:white">
+      <img  style="background-color:white;
+            height: 4vw;
+            width: 4vw;
+            margin-top: -1vw;
+            margin-right:6vw;
+            float: right;
+            background-size: 100%
+          " src="../../imges/yhm_01.png"/>
+      <div
+        style="
+            color: #999191;
+            margin-left: -0.5vw;
+            margin-top: 1vw;
+            margin-bottom: 1vw;
+           font-size: 20px;
+           font-weight: 400;
+           text-align: center;
+            font-family: Microsoft YaHei, Microsoft YaHei-Regular;">
+        {{ name }}
+      </div>
+    </div>
   <div class='menu-wrapper' style="background-color: white;
 
 	">
@@ -26,6 +49,7 @@
       </el-submenu>
     </template>
   </div>
+  </div>
 </template>
 
 <script>
@@ -40,7 +64,8 @@ export default {
   },
   data () {
     return {
-
+      name: "",
+      ss2: "",
       active: "",
       img1: require('../../imges/1.png'),
       img2: require('../../imges/4.png'),
@@ -48,11 +73,29 @@ export default {
       smallTitle: ''
     }
   },
+  created() {
+    var that = this;
+    this.cre1();
+  },
   methods: {
     check_login () {
 
 
 
+    },
+    cre1() {
+      var that = this;
+      this.ss2 = setInterval(function () {
+        that.name = localStorage.getItem("yhm");
+        //that.name = '管理员';
+
+        if (that.name != null && that.name != undefined && that.name != "") {
+          that.cre2();
+        }
+      }, 1000);
+    },
+    cre2() {
+      clearInterval(this.ss2);
     },
     handleClick (sid, link, name, fname) {
       // alert(333)

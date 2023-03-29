@@ -141,7 +141,7 @@
               .then(() => {
                 addWish1(this.form).then((res) => {
 
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "新增成功!",

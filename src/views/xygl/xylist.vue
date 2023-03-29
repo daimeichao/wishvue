@@ -76,7 +76,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-      <el-table :data="tableData" style="width: 100%; margin-top: 10px" v-loading="loading" row-key="id"   stripe :tree-props="{ children: 'children', hasChildren: 'hasChildren' } ">
+      <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 100%; margin-top: 10px" v-loading="loading" row-key="id"   stripe :tree-props="{ children: 'children', hasChildren: 'hasChildren' } ">
         <el-table-column
           label="序号"
           type="index"
@@ -743,7 +743,7 @@
             })
               .then(() => {
                 updatesort(this.form1).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$refs.upload && this.clearForm()
                     this.$message({
                       type: "success",
@@ -968,7 +968,7 @@
       //获取列表
       getWishList () {
        wishlist(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             res.data.outmap.list.forEach(e=>{
               e.ifprice = e.price =='1'?true:false
             })

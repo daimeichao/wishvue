@@ -67,7 +67,7 @@
     padding-top: 1vw;
         ">
          <template>
-      <el-table :data="tableData" style="width: 100%; margin-top: 10px" v-loading="loading"  stripe row-key="id" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+      <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 100%; margin-top: 10px" v-loading="loading"  stripe row-key="id" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
         <el-table-column
           label="序号"
           type="index"
@@ -336,7 +336,7 @@
         })
           .then(() => {
             deleteWish1(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -398,7 +398,7 @@
             })
               .then(() => {
                 updateWish1(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -503,7 +503,7 @@
       //获取心愿待审核列表
       getxySHList () {
         getxySHList(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;
           } else {

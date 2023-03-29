@@ -34,7 +34,7 @@
             <div style="margin-top: 10px; border: 0px solid #d8dce5" class="bg-purple filter-container calendar-list-container">
               <el-col :span="24">
                 <div calss="bg-purple filter-container app-container3  calendar-list-container" style="line-height: 25px">
-                  <el-table stripe border :key="tableKey" :data="lslist" ref="listdata" style="width: 100%;" highlight-current-row v-loading="loading"
+                  <el-table stripe border :key="tableKey" :data="lslist" ref="listdata"  style="width: 100%;" highlight-current-row v-loading="loading"
                     element-loading-text="加载中"
                     element-loading-spinner="el-icon-loading"
                     element-loading-background="rgba(255, 255, 255)" header-row-class-name="tableHead" cell-class-name="tableHead" :header-cell-style="{ background: '#f2f2f3' }" :cell-style="{ padding: '8px' }">

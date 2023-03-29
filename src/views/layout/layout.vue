@@ -39,13 +39,12 @@
             float: left;
             margin-left: -2vw;
             margin-top: -7vw;" >
-      <lottie :options="defaultOptions"  :height="300" :width="350" @animCreated="handleAnimation" /></div>
+      <lottie :options="defaultOptions"  :height="300" :width="350" style="margin-bottom: 0.1vw !important;" @animCreated="handleAnimation" /></div>
       <div style="margin-top: 1.2vw;margin-left: 15vw">
       <span style="font-size: 36px;color:#FFFFFF;font-family: Lucida Calligraphy, cursive, serif, sans-serif;font-weight: bolder;"> 社区志愿后端管理
       </span>
         <div style="position: fixed;top: 0;right: 1vw">
           <div style="float: right; margin-right: 10px">
-<!--        <div style="float: right; margin-right: 30px">-->
         <div @click="logout" style="
             cursor: pointer;
             color: #fff;
@@ -206,7 +205,7 @@ export default {
     var newsId = localStorage.getItem("newsId");
     if (newsId != "" && newsId != null && newsId != undefined) {
       // getCbdDetail({ XXID: newsId }).then((res) => {
-      //   if (res.status == 'success') {
+      //   if (res.data.outmap.result == 'success') {
       //     if (res.data.outmap.cbdDetail != '' && res.data.outmap.cbdDetail != null) {
       //       that.dialogVisible = true;
       //     }

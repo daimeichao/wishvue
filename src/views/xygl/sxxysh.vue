@@ -63,7 +63,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-      <el-table :data="tableData" style="width: 90%; margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+      <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 90%;  margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
         <el-table-column
           label="序号"
           type="index"
@@ -368,7 +368,7 @@ import {
         })
           .then(() => {
             deleteSX(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -440,7 +440,7 @@ import {
             })
               .then(() => {
                 updateSX1(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -545,7 +545,7 @@ import {
       //获取列表
       getsxSHList () {
         getsxSHList(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             this.tableData = res.list;
             this.total = res.count;
           } else {

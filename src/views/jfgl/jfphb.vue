@@ -63,7 +63,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table :data="tableData" style="width: 90%; margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+          <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 90%;  margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column
               label="序号"
               type="index"
@@ -136,7 +136,7 @@
         })
           .then(() => {
             delphb(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -213,7 +213,7 @@
       //获取列表
       getlist () {
         getphb(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             console.log("getphb",res)
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;

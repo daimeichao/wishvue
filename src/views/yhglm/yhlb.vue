@@ -89,7 +89,7 @@
         <template>
           <el-table ref="listdata" stripe v-loading="loading" element-loading-text="加载中"
             element-loading-spinner="el-icon-loading" element-loading-background="rgba(255, 255, 255)" border
-            :key="tableKey" :data="jslist" style="width: 97.6%">
+            :key="tableKey" :header-cell-style="{background:'#e1fff1'}" :data="jslist" style="width: 97.6%">
             <!-- <el-table-column prop="account" label="账号名称" min-width="100">
             </el-table-column> -->
             <el-table-column label="序号" width="50px" align="center">

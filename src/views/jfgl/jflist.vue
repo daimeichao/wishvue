@@ -63,7 +63,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table :data="tableData" style="width: 90%; margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+          <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 90%;  margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column
               label="序号"
               type="index"
@@ -71,10 +71,10 @@
               align="center">
             </el-table-column>
             <el-table-column prop="name" label="用户名" width="130px"> </el-table-column>
-            <el-table-column prop="change" label="增减" width="130px">
+            <el-table-column prop="change1" label="增减" width="130px">
               <template slot-scope="scope"width="130px">
-                            <span v-if="scope.row.change == '0'" style="text-align:center;font-size: 18px;color: #308917;">新增</span>
-                            <span v-if="scope.row.change== '1'">消费</span>
+                            <span v-if="scope.row.change1 == '0'" style="text-align:center;font-size: 18px;color: #308917;">新增</span>
+                            <span v-if="scope.row.change1== '1'" style="text-align:center;font-size: 18px;color: #dc751c;">消费</span>
                           </template>
             </el-table-column>
             <el-table-column prop="changenum" label="变化积分数" width="130px"> </el-table-column>
@@ -186,7 +186,7 @@
         })
           .then(() => {
             delById(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -250,7 +250,7 @@
             })
               .then(() => {
                 updById(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "审核成功!",
@@ -342,7 +342,7 @@
       //获取列表
       getlist () {
         jflist(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             console.log("jflist",res)
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;

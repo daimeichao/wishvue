@@ -21,7 +21,7 @@
         ">
         <template>
     <section ref="print">
-      <el-table :data="tableData" style="width: 100%; margin-top: 10px" v-loading="loading"  stripe row-key="id" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+      <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 100%; margin-top: 10px" v-loading="loading"  stripe row-key="id" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
         <el-table-column prop="claimant" label="认领人姓名" width="120px"> </el-table-column>
         <el-table-column prop=" expressage" label="快递单号" width="120px">
         </el-table-column>
@@ -209,7 +209,7 @@
         })
           .then(() => {
             deleteSX(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -272,7 +272,7 @@
             })
               .then(() => {
                updateSX(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "修改成功!",
@@ -336,7 +336,7 @@
               .then(() => {
                 addSX(this.form).then((res) => {
                   // console.log("res=", res);
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "新增成功!",
@@ -378,7 +378,7 @@
       getSXList () {
         getSXList(this.params).then((res) => {
           // console.log(res)
-          if (res.status == "success") {
+          if (res.status=="success") {
             this.tableData = res.data.outmap.list;
             this.total = res.data.outmap.count;
           } else {

@@ -66,7 +66,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table :data="tableData" style="width: 90%; margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+          <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 90%;  margin-top: 10px"  stripe v-loading="loading" row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column
               label="序号"
               type="index"
@@ -422,7 +422,7 @@
         })
           .then(() => {
             delsp(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -503,17 +503,17 @@
             })
               .then(() => {
                 updsp(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
-                      message: "审核成功!",
+                      message: "修改成功!",
                     });
                     this.dialogVisible = false;
                     this.handleCurrentChange(this.params.curpage);
                   } else {
                     this.$message({
                       type: "error",
-                      message: "审核失败，请联系管理员!",
+                      message: "修改失败，请联系管理员!",
                     });
                     this.dialogVisible = false;
                   }
@@ -553,14 +553,14 @@
         }
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm("是否新增心愿?", "提示", {
+            this.$confirm("是否新增商品?", "提示", {
               confirmButtonText: "确定",
               cancelButtonText: "取消",
               type: "warning",
             })
               .then(() => {
                 addsp(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$message({
                       type: "success",
                       message: "新增成功!",
@@ -587,6 +587,7 @@
       },
       //新增商品
       addsp(){
+        this.title="新增商品"
         this.adddialog=true
         this.type=1
         this.form={}
@@ -606,7 +607,7 @@
       getlist () {
         splist(this.params).then((res) => {
           console.log("splist",res)
-          if (res.status == "success") {
+          if (res.status=="success") {
             this.tableData = res.data.outmap.list;
             for (let i = 0; i <this.tableData.length ; i++) {
               this.tableData[i].url=config.apiUrl+this.tableData[i].url

@@ -65,7 +65,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-          <el-table ref="listdata" stripe v-loading="loading" element-loading-text="加载中"
+          <el-table ref="listdata" :header-cell-style="{background:'#e1fff1'}" stripe v-loading="loading" element-loading-text="加载中"
             element-loading-spinner="el-icon-loading" element-loading-background="rgba(255, 255, 255)" border
             :key="tableKey" :data="jslist" style="width: 97.6%">
             <!-- <el-table-column type="index" label="序号" width="120">
@@ -424,7 +424,7 @@ export default {
         .then((_) => {
           insJS({ JSMC: this.JSMC, BZ: this.BZ, cdArr: this.cdArr }).then((res) => {
             console.log('%c [ res ]-431-「e:/jiading/littlewish/littlewish-back/src/views/xtgl/jsgl」', 'font-size:13px; background:#27f454; color:#6bff98;', res)
-            if (res.data.outmap.result == "success") {
+            if (res.status=="success") {
               this.$message({
                 showClose: true,
                 message: "新增成功",
@@ -497,7 +497,7 @@ export default {
         .then((_) => {
           updJS({ JSMC: this.JSMC, BZ: this.BZ, cdArr: this.cdArr, JSID: this.JSID }).then(
             (res) => {
-              if (res.data.outmap.result == "success") {
+              if (res.status=="success") {
                 this.$message({
                   showClose: true,
                   message: "修改成功",

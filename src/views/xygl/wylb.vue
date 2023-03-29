@@ -77,7 +77,7 @@
     margin-left: 1vw;
     padding-top: 1vw; ">
         <template>
-    <el-table :data="tableData" style="width: 100%; margin-top: 10px" v-loading="loading"  stripe row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+    <el-table :data="tableData" :header-cell-style="{background:'#e1fff1'}" style="width: 100%; margin-top: 10px" v-loading="loading"  stripe row-key="tid" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
       <el-table-column
         label="序号"
         type="index"
@@ -645,7 +645,7 @@
         })
           .then(() => {
             deleteSX(cs).then((res) => {
-              if (res.status == "success") {
+              if (res.status=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -718,7 +718,7 @@
             })
               .then(() => {
                 updatesort(this.form1).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$refs.upload && this.clearForm()
                     this.$message({
                       type: "success",
@@ -787,7 +787,7 @@
             })
               .then(() => {
                 updateWish(this.form).then((res) => {
-                  if (res.status == "success") {
+                  if (res.status=="success") {
                     this.$refs.upload && this.clearForm()
                     this.$message({
                       type: "success",
@@ -913,7 +913,7 @@
       //获取列表
       getwylb() {
         getsxSHList(this.params).then((res) => {
-          if (res.status == "success") {
+          if (res.status=="success") {
             this.tableData = res.list;
             this.total = res.count;
           } else {
