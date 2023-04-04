@@ -419,6 +419,7 @@ import {
         };
         getSXById(sc).then((res) => {
           this.form=res.map;
+          console.log(this.form,"this.form")
           this.urlList=res.urlList
           this.form.claimant_audit_state='';
           this.form.claimant_auditid=localStorage.getItem("pid");
@@ -570,6 +571,7 @@ import {
     //初始渲染
     created () {
       this. getsxSHList();
+      this.form.operatorid=localStorage.getItem("pid")
       // this.getYhAndCompList();获取单位列表
     },
   };

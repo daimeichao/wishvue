@@ -303,6 +303,7 @@
         };
         getById(sc).then((res) => {
           this.form=res.data.outmap.map;
+          console.log("zyzform",this.form)
           for (let i = 0; i <this.namelist.length ; i++) {
             if(this.namelist[i].pid==this.form.zyz_auditid){
               this.form.zyz_auditid=this.namelist[i].name;
