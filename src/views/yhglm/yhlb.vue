@@ -90,8 +90,6 @@
           <el-table ref="listdata" stripe v-loading="loading" element-loading-text="加载中"
             element-loading-spinner="el-icon-loading" element-loading-background="rgba(255, 255, 255)" border
             :key="tableKey" :header-cell-style="{background:'#e1fff1'}" :data="jslist" style="width: 97.6%">
-            <!-- <el-table-column prop="account" label="账号名称" min-width="100">
-            </el-table-column> -->
             <el-table-column label="序号" width="50px" align="center">
               <template slot-scope="scope">
                 {{ scope.$index + (listQuery.curpage - 1) * listQuery.pagesize + 1 }}
@@ -133,11 +131,6 @@
         </template>
       </div>
 
-      <!-- </el-col>
-
-      <el-col :span="1">
-        <div style="height: 8.7vw;"></div>
-      </el-col> -->
     </el-row>
 
     <!-- 弹框 -->
@@ -170,33 +163,15 @@
         <div>
           <div class="jsshu" style="font-size: 0.9vw; margin: 0 auto; width: 70%">
             <el-form ref="form" :model="form" label-width="120px" label-position="right">
-              <!-- <el-form-item label="账号名称" :required="true">
-                <el-input v-model="form.account" maxlength="50"></el-input>
-              </el-form-item> -->
-              <!-- :required="true" -->
               <el-form-item label="姓名">
                 <el-input v-model="form.name" maxlength="200"></el-input>
               </el-form-item>
-              <!-- <el-form-item label="密码" v-if="type == 'ins'" :required="true">
-                <el-input v-model="form.password" clearable show-word-limit show-password type="password"
-                  maxlength="200">
-                </el-input>
-              </el-form-item> -->
               <el-form-item label="微信昵称">
                 {{ form.nick }}
-                <!-- <el-input v-model="form.nick" maxlength="200"></el-input> -->
               </el-form-item>
               <el-form-item label="头像">
                 <el-image :src="form.portrait" style="width: 10vw" :previewSrcList="srcFmtList"
                   v-if="form.portrait != '' && form.portrait != null && form.portrait != undefined" />
-                <!-- <el-upload class="upload-demo" ref="upload" :action="url" :http-request="afterRead"
-                  :before-upload="beforeRead" :on-preview="handlePreview" :on-remove="handleRemove"
-                  :before-remove="beforeRemove" :show-file-list="false" :limit="99" :on-exceed="handleExceed"
-                  :file-list="fileList" :on-success="handleAvatarSuccess" :data="{ path: 'yhtx' }">
-                  <img v-if="tpdz != '' && tpdz != undefined" :src="tpdz" style="height: auto; width: 150px" />
-                  <img v-if="tpdz == '' || tpdz == undefined" src="../../imges/sc.png"
-                    style="height: 90px; width: 150px" />
-                </el-upload> -->
               </el-form-item>
               <el-form-item label="联系方式">
                 {{ form.phone }}
@@ -249,8 +224,6 @@
               <el-input v-model="new_password" clearable show-password type="password" maxlength="200"></el-input>
             </el-form-item>
           </el-form>
-
-          <!-- <span slot="footer" class="dialog-footer" > -->
           <div style="float: right; margin-top: 3vw">
             <button style="
                 width: 4vw;
@@ -293,8 +266,6 @@
           <el-form ref="form" label-width="120px" label-position="right">
             <el-form-item label="角色">
               <el-select v-model="selected_jsid" placeholder="请选择角色" style="width: 80%" multiple>
-                <!-- <el-option label="普通用户" value="0"></el-option>
-                  <el-option label="工作人员" value="1"></el-option> -->
                 <el-option v-for="(v, i) in roleList" :key="i" :label="v.JSMC" :value="v.XLH"></el-option>
               </el-select>
             </el-form-item>
@@ -362,7 +333,6 @@ export default {
       tpdz: "",
       srcFmtList: [],
       fileList: [],
-
       yhType: "2",
       new_password: "",
       loading: true,
@@ -452,12 +422,6 @@ export default {
       this.hideStatus = false;
       this.tableHeight = window.innerHeight - 193;
     },
-    // //表格自适应高
-    // getHeight() {
-    //   this.height = window.innerHeight - 350 + "px";
-    //   this.tableHeight = window.innerHeight - 300;
-    //   // this.divheight = window.innerHeight - 165 + 'px'
-    // },
     //消息提示  1成功 0 警告
     msg(type, title) {
       let t = ""; //默认消息
@@ -496,7 +460,8 @@ export default {
             res.data.outmap.list[i].ifjyzk = false;
           }
           if (res.data.outmap.list[i].portrait != null && res.data.outmap.list[i].portrait != "") {
-            this.srcFmtList.push(res.data.outmap.list[i].portrait);
+            this.srcFmtList.push(config.apiUrl+res.data.outmap.list[i].portrait);
+            res.data.outmap.list[i].portrait=config.apiUrl+res.data.outmap.list[i].portrait;
           }
         }
         this.jslist = res.data.outmap.list;
@@ -536,10 +501,6 @@ export default {
         this.msg(0, "请设置密码!");
         return false;
       }
-      // if (!this.mmIsEmpty(this.new_password)) {
-      //   this.msg(0, "密码至少8位、包含数字、大小写字母、特殊字符!");
-      //   return false;
-      // }
       this.$confirm("确认重置密码吗？")
         .then((_) => {
           updatePassword({
@@ -569,28 +530,10 @@ export default {
         .catch(() => { });
     },
     addUser() {
-      // if (this.objIsEmpty(this.form.account)) {
-      //   this.msg(0, "账号名称不能为空！");
-      //   return false;
-      // }
       if (this.objIsEmpty(this.form.name)) {
         this.msg(0, "姓名不能为空！");
         return false;
       }
-      // if (this.objIsEmpty(this.form.password)) {
-      //   this.msg(0, "密码不能为空！");
-      //   return false;
-      // }
-      // if (!this.mmIsEmpty(this.form.password)) {
-      //   this.msg(0, "密码至少8位、包含数字、大小写字母、特殊字符!");
-      //   return false;
-      // }
-      // if (!this.objIsEmpty(this.form.phone)) {
-      //   if (!this.sendPhone(this.form.phone)) {
-      //     this.msg(0, "联系方式格式不正确！");
-      //     return false;
-      //   }
-      // }
       this.form.jyzk = this.jyztFlag ? "1" : "0";
       this.form.type = "1"
       this.$confirm("确认新增吗？")

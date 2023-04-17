@@ -40,9 +40,9 @@
                   <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
                   <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
 
-                  <button style="background-color: rgb(0, 97, 172)" @click="addsp()">
+                  <el-button icon="el-icon-plus"style="background-color: rgb(0, 97, 172);color: #FFFFFF" @click="addsp()">
                     新增
-                  </button>
+                  </el-button>
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>
@@ -422,7 +422,7 @@
         })
           .then(() => {
             delsp(cs).then((res) => {
-              if (res.status=="success") {
+              if (res.result=="success") {
                 this.$message({
                   type: "success",
                   message: "删除成功!",
@@ -432,6 +432,7 @@
                   this.params.curpage = this.params.curpage - 1;
                 }
                 this.handleCurrentChange(this.params.curpage);
+                this.getlist()
               } else {
                 this.$message({
                   type: "error",
@@ -540,10 +541,12 @@
       },
       //关闭详情和新增弹窗
       closeWindow02 () {
-      this.adddialog=false;
+        this.fileList=[];
+        this.adddialog=false;
         this.detailVisible = false;
       },
       onSubmit (formName) {
+        this.fileList=[];
         this.form.operatorid=localStorage.getItem("pid");
         console.log("this.tplist",this.tpList)
         if(this.tpList.length !=0){
@@ -560,13 +563,16 @@
             })
               .then(() => {
                 addsp(this.form).then((res) => {
-                  if (res.status=="success") {
+                  console.log("raddes",res)
+                  if (res.result=="success") {
                     this.$message({
                       type: "success",
                       message: "新增成功!",
                     });
-                    this.dialogVisible = false;
                     this.getlist();
+                    this.dialogVisible = false;
+
+
                   } else {
                     this.$message({
                       type: "error",
@@ -574,6 +580,8 @@
                     });
                   }
                 });
+
+
                 this.adddialog=false;
               })
               .catch(() => {
@@ -587,6 +595,7 @@
       },
       //新增商品
       addsp(){
+        this.fileList=[];
         this.title="新增商品"
         this.adddialog=true
         this.type=1
@@ -611,7 +620,6 @@
             this.tableData = res.data.outmap.list;
             for (let i = 0; i <this.tableData.length ; i++) {
               this.tableData[i].url=config.apiUrl+this.tableData[i].url
-
             }
             this.total = res.data.outmap.count;
           } else {

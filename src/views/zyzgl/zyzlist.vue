@@ -39,7 +39,7 @@
                 <div class="disFlexCenter" style="margin-top: 5px">
                   <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="search()">搜索</el-button>
                   <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="reset()">重置</el-button>
-                  <el-button type="success"  icon="el-icon-circle-plus-outline" @click="addzyz()">新增</el-button>
+                  <el-button type="success"  style="background-color: rgb(0, 97, 172);color: #FFFFFF"icon="el-icon-circle-plus-outline" @click="addzyz()">新增</el-button>
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>

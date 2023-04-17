@@ -26,9 +26,9 @@
                             <el-row class="disFlexCenter">
                                 <el-col :span="1"></el-col>
                                 <div class="disFlexCenter" style="margin-top: 5px">
-                                    <button style="background-color: rgb(50, 161, 247)" @click="ins">
+                                  <el-button icon="el-icon-plus"style="background-color: rgb(0, 97, 172);color: #FFFFFF"  @click="ins">
                                         新增轮播图
-                                    </button>
+                                    </el-button>
                                 </div>
                                 <div>
                                     <el-col :span="22" style="margin-top: 3vh"> </el-col>

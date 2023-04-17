@@ -44,9 +44,9 @@
                 <div class="disFlexCenter" style="margin-top: 5px">
                   <el-button style="background-color: #FFC0CB;color: #FFFFFF"  icon="el-icon-search" @click="handleFilter">搜索</el-button>
                   <el-button style="background-color: #63B184;color: #FFFFFF" icon="el-icon-refresh-right" @click="handleReset">重置</el-button>
-                  <button style="background-color: rgb(50, 161, 247)" @click="ins">
+                  <el-button icon="el-icon-plus"style="background-color: rgb(0, 97, 172);color: #FFFFFF"@click="ins">
                     新增工作人员
-                  </button>
+                  </el-button>
                 </div>
                 <div>
                   <el-col :span="22" style="margin-top: 3vh"> </el-col>
