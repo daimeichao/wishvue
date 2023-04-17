@@ -116,10 +116,10 @@
                        :autosize="{ minRows: 2, maxRows: 4}" v-model="form.spxq" placeholder="" maxlength="255" style="width: 50%"></el-input>
           </el-form-item>
           <el-form-item label="商品价格:" prop="spprice">
-            <el-input v-model="form.spprice" placeholder="请输入" clearable style="width: 50%"></el-input>
+            <el-input v-model="form.spprice" placeholder="请输入" onkeyup="this.value=this.value.replace(/[^\d]/g,'');" clearable style="width: 50%"></el-input>
           </el-form-item>
           <el-form-item label="商品库存:" prop="kc">
-            <el-input v-model="form.kc" placeholder="请输入" clearable style="width: 50%"></el-input>
+            <el-input v-model="form.kc" onkeyup="this.value=this.value.replace(/[^\d]/g,'');" placeholder="请输入" clearable style="width: 50%"></el-input>
           </el-form-item>
           <el-form-item label="商品图片:" prop="url">
             <div >

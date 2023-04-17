@@ -71,7 +71,9 @@
               align="center">
             </el-table-column>
             <el-table-column prop="name" label="用户名" width="130px"> </el-table-column>
-            <el-table-column prop="zf" label="积分数" width="130px"> </el-table-column>
+            <el-table-column prop="addjf" label="总增积分数" width="130px"> </el-table-column>
+            <el-table-column prop="cutjf" label="总扣积分数" width="130px"> </el-table-column>
+            <el-table-column prop="jf" label="剩余积分数" width="130px"> </el-table-column>
             <el-table-column label="操作" min-width="350">
               <template slot-scope="scope">
                 <el-button size="mini" type="danger" @click.native="deleteDi(scope.row)">删除</el-button>
